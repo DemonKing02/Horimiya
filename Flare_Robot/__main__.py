@@ -23,8 +23,8 @@ from telegram.ext import (
 from telegram.ext.dispatcher import DispatcherHandlerStop
 from telegram.utils.helpers import escape_markdown
 
-import Hottie_Robot.modules.sql.users_sql as sql
-from Hottie_Robot import (
+import Flare_Robot.modules.sql.users_sql as sql
+from Flare_Robot import (
     ALLOW_EXCL,
     CERT_PATH,
     DONATION_LINK,
