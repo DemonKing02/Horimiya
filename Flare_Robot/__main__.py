@@ -126,7 +126,7 @@ Main commands available[.](https://telegra.ph//file/81b18388bd4bcde77af22.jpg)
 )
 
 HELP_MSG = "Click the button below to get help manu in your pm."
-HOTTIE_IMG = "https://telegra.ph/file/e8c4d69dee7f7e381ea61.mp4"
+FLARE_IMG = "https://telegra.ph/file/e8c4d69dee7f7e381ea61.mp4"
 HELP_IMG = "https://telegra.ph/file/b2544b2b8f1cc3d4f0ddb.jpg"
 
 DONATE_STRING = """Heya, glad to hear you want to donate but Flare is free for everyone!!!"""
@@ -247,7 +247,7 @@ def start(update: Update, context: CallbackContext):
             )
     else:
         update.effective_message.reply_photo(
-            Flare_IMG,
+            FLARE_IMG,
             caption="<b>The Sexy is Horny again!! !\nHaven't sleep since</b>: <code>{}</code>".format(
                 uptime
             ),
