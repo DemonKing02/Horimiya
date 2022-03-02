@@ -252,6 +252,7 @@ pgram = Client(
     api_hash=API_HASH,
     bot_token=TOKEN,
 )
+pbot = Client("FlarePyro", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
 mongodb = MongoClient(MONGO_DB_URI, 27017)[MONGO_DB]
 motor = motor_asyncio.AsyncIOMotorClient(MONGO_DB_URI)
 db = motor[MONGO_DB]
