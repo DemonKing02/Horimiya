@@ -23,8 +23,8 @@ from telegram.ext import (
 from telegram.ext.dispatcher import DispatcherHandlerStop
 from telegram.utils.helpers import escape_markdown
 
-import Flare_Robot.modules.sql.users_sql as sql
-from Flare_Robot import (
+import Hottie_Robot.modules.sql.users_sql as sql
+from Hottie_Robot import (
     ALLOW_EXCL,
     CERT_PATH,
     DONATION_LINK,
@@ -44,9 +44,9 @@ from Flare_Robot import (
 
 # needed to dynamically load modules
 # NOTE: Module order is not guaranteed, specify that in the config file!
-from Flare_Robot.modules import ALL_MODULES
-from Flare_Robot.modules.helper_funcs.chat_status import is_user_admin
-from Flare_Robot.modules.helper_funcs.misc import paginate_modules
+from Hottie_Robot.modules import ALL_MODULES
+from Hottie_Robot.modules.helper_funcs.chat_status import is_user_admin
+from Hottie_Robot.modules.helper_funcs.misc import paginate_modules
 
 
 def get_readable_time(seconds: int) -> str:
@@ -78,34 +78,32 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-────「 {} 」────
-*Heyaa! {},*
-* You Know me! I am a Advance & Cool Robot With So Many Sexy Features.*
-[•°•°•°•°•°•°•°•°•°•°•°]
-♛┈⛧✾✾✾┈┈•༶༶•┈┈⛧✾✾✾┈♛
-➷ *Uptime:* {}
-➷ `{}` *users, across* `{}` *chats.*
-[•°•°•°•°•°•°•°•°•°•°•°]
-♛┈⛧✾✾✾┈┈•༶༶•┈┈⛧✾✾✾┈♛
-➹ Try The Help Buttons Below To Know My Abilities[.](___) ××
+────「 [{}](https://telegra.ph/file/7153ff6d5a0e2711f24d7.jpg) 」────
+*Whassup! {},*
+*I am an Anime themed advance group management bot with a lot of Hot Features.*
+➖➖➖➖➖➖➖➖➖➖➖➖➖
+• *Uptime:* `{}`
+• `{}` *users, across* `{}` *chats.*
+➖➖➖➖➖➖➖➖➖➖➖➖➖
+➢ Try The Help Buttons Below To Know My Abilities ❃❃
 """
 
 buttons = [
     [
         InlineKeyboardButton(
-            text=f"Add Flare To Your Group", url=f"t.me/Flare_Robot?startgroup=true"
+            text=f"Add Hottie To Your Group", url=f"t.me/Hottie_Robot?startgroup=true"
         )
     ],
     [
         InlineKeyboardButton(text="[► Help ◄]", callback_data="help_back"),
         InlineKeyboardButton(
-            text="❔ Chit Chat", url="https://t.me/Otaku_gang1"
+            text="❔ Chit Chat", url="https://t.me/Anime_python_coding"
         ),
         InlineKeyboardButton(text="[► Inline ◄]", switch_inline_query_current_chat=""),
     ],
     [
-        InlineKeyboardButton(text="🚑Sexy Support", url=f"https://t.me/{SUPPORT_CHAT}"),
-        InlineKeyboardButton(text="📡Sexy Updates", url="https://t.me/Hottie_Updates"),
+        InlineKeyboardButton(text="❄️ Support", url=f"https://t.me/{SUPPORT_CHAT}"),
+        InlineKeyboardButton(text="☃️ Updates", url="https://t.me/Hottie_Updates"),
     ],
 ]
 
@@ -126,10 +124,11 @@ Main commands available[.](https://telegra.ph//file/81b18388bd4bcde77af22.jpg)
 )
 
 HELP_MSG = "Click the button below to get help manu in your pm."
-HOTTIE_IMG = "https://telegra.ph/file/e8c4d69dee7f7e381ea61.mp4"
-HELP_IMG = "https://telegra.ph/file/b2544b2b8f1cc3d4f0ddb.jpg"
+HOTTIE_IMG = "https://telegra.ph/file/08b3256ecac791444cbf2.jpg"
+HELP_IMG = "https://telegra.ph/file/69866f641bc97c73d146b.jpg"
 
-DONATE_STRING = """Heya, glad to hear you want to donate but Flare is free for everyone!!!"""
+DONATE_STRING = """Heya, glad to hear you want to donate!
+Click here to donate in [Paypal](https://ko-fi.com/aasfcyberking)"""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -192,7 +191,7 @@ def send_help(chat_id, text, keyboard=None):
 
 def test(update: Update, context: CallbackContext):
     # pprint(eval(str(update)))
-    # update.effective_message.reply_text("Heyaa tester! _I_ *have* `markdown`", parse_mode=ParseMode.MARKDOWN)
+    # update.effective_message.reply_text("Hola tester! _I_ *have* `markdown`", parse_mode=ParseMode.MARKDOWN)
     update.effective_message.reply_text("This person edited a message")
     print(update.effective_message)
 
@@ -247,8 +246,8 @@ def start(update: Update, context: CallbackContext):
             )
     else:
         update.effective_message.reply_photo(
-            Flare_IMG,
-            caption="<b>The Sexy is Horny again!! !\nHaven't sleep since</b>: <code>{}</code>".format(
+            HOTTIE_IMG,
+            caption="<b>Yes, Darling I'm alive!\nHaven't sleep since</b>: <code>{}</code>".format(
                 uptime
             ),
             parse_mode=ParseMode.HTML,
@@ -256,12 +255,12 @@ def start(update: Update, context: CallbackContext):
                 [
                     [
                         InlineKeyboardButton(
-                            text="🚑Sexy Support",
+                            text="🚑 Support",
                             url=f"https://telegram.dog/{SUPPORT_CHAT}",
                         ),
                         InlineKeyboardButton(
-                            text="📢Sexy Updates",
-                            url="https://t.me/Freia_Updates",
+                            text="📢 Updates",
+                            url="https://t.me/Hottie_Updates",
                         ),
                     ]
                 ]
@@ -622,7 +621,7 @@ def main():
         try:
             dispatcher.bot.sendMessage(
                 f"@{SUPPORT_CHAT}",
-                "[Yamate-Yamate Kudasai!!](https://telegra.ph/file/c95dbc16b8b84ab8ecc00.mp4)",
+                "[Hottie Is Online❄️](https://telegra.ph/file/c71a45e84481ac6a3a93a.jpg)",
                 parse_mode=ParseMode.MARKDOWN,
             )
         except Unauthorized:
