@@ -622,7 +622,7 @@ def main():
         try:
             dispatcher.bot.sendMessage(
                 f"@{SUPPORT_CHAT}",
-                "[Sexy is Horny Again!!](https://telegra.ph/file/926039375cac9825e1e58.jpg)",
+                "[Yamate-Yamate Kudasai!!](https://telegra.ph/file/c95dbc16b8b84ab8ecc00.mp4)",
                 parse_mode=ParseMode.MARKDOWN,
             )
         except Unauthorized:
