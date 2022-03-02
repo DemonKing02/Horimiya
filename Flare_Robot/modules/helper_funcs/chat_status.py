@@ -426,6 +426,6 @@ def connection_status(func):
 
     return connected_status
 
-from Cutiepii_Robot.modules import connection
+from Flare_Robot.modules import connection
 
 connected = connection.connected
