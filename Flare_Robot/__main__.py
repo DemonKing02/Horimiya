@@ -87,7 +87,7 @@ PM_START_TEXT = """
 ➷ `{}` *users, across* `{}` *chats.*
 [•°•°•°•°•°•°•°•°•°•°•°]
 ♛┈⛧✾✾✾┈┈•༶༶•┈┈⛧✾✾✾┈♛
-➹ Try The Help Buttons Below To Know My Abilities[.](___) ××
+➹ Try The Help Buttons Below To Know My Abilities[.](https://telegra.ph/file/f0f24de946ae4ed27340b.jpg) ××
 """
 
 buttons = [
