@@ -90,7 +90,7 @@ if ENV:
     API_ID = os.environ.get("API_ID", None)
     YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", True)
     API_HASH = os.environ.get("API_HASH", None)
-    DB_URI = os.environ.get("DATABASE_URL")
+    DB_URL = os.environ.get("DATABASE_URL")
     DONATION_LINK = os.environ.get("DONATION_LINK")
     LOAD = os.environ.get("LOAD", "").split()
     NO_LOAD = os.environ.get("NO_LOAD", "translation").split()
@@ -193,7 +193,7 @@ else:
     YOUTUBE_API_KEY = Config.YOUTUBE_API_KEY
     BOT_USERNAME = Config.BOT_USERNAME
     FLARE_PHOTO = Config.FLARE_PHOTO
-    DB_URI = Config.DB_URI
+    DB_URL = Config.DB_URI
     BOT_NAME = Config.BOT_NAME
     STRING_SESSION = Comfig.STRING_SESSION
     BOT_API_URL = Config.BOT_API_URL
