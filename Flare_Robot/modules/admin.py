@@ -731,7 +731,7 @@ CHAT_PIC_HANDLER = CommandHandler(
 DEL_CHAT_PIC_HANDLER = CommandHandler(
     "delgpic", rmchatpic, filters=Filters.chat_type.groups, run_async=True
 )
-SET_CHAT_TITLE_HANDLER = CommandHandler(
+SETCHAT_TITLE_HANDLER = CommandHandler(
     "setgtitle", setchat_title, filters=Filters.chat_type.groups, run_async=True
 )
 SETSTICKET_HANDLER = CommandHandler(
