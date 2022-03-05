@@ -14,6 +14,7 @@ from Flare_Robot.modules.helper_funcs.chat_status import (
     bot_admin,
     can_pin,
     can_promote,
+    user_can_promote,
     connection_status,
     user_admin,
 )
