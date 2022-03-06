@@ -33,9 +33,12 @@ wikipedia==1.4.0
 httpx
 pyrogram
 motor
-pymongo
+pymongo==3.12.1
 DateTime
 asyncio
 python-arq
 aiohttp
 odmantic
+cryptg==0.2.post4
+pymongo[srv]
+
