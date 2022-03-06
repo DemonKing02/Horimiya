@@ -35,3 +35,6 @@ pyrogram
 motor
 pymongo
 DateTime
+asyncio
+python-arq
+aiohttp
