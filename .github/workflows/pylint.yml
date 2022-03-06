@@ -30,6 +30,6 @@ jobs:
           commit_message: 'Fixed the mistake code function'
           commit_options: '--no-verify'
           repository: .
-          commit_user_name: aryazakaria01
-          commit_user_email: 80420642+aryazakaria01@users.noreply.github.com
-          commit_author: aryazakaria01 <80420642+aryazakaria01@users.noreply.github.com>
+          commit_user_name: Asta-silva
+          commit_user_email: Astasilva42832@gmail.com
+          commit_author: Asta-silva <Astasilva42832@gmail.com>
