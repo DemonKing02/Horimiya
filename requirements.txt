@@ -32,3 +32,6 @@ wget
 wikipedia==1.4.0
 httpx
 pyrogram
+motor
+pymongo
+DateTime
