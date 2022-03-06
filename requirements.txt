@@ -30,3 +30,5 @@ telegraph==2.1.0
 ujson==5.1.0
 wget
 wikipedia==1.4.0
+httpx
+pyrogram
