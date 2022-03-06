@@ -38,3 +38,4 @@ DateTime
 asyncio
 python-arq
 aiohttp
+odmantic
