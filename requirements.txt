@@ -32,7 +32,7 @@ wget
 wikipedia==1.4.0
 httpx
 pyrogram
-motor
+motor==2.9.4
 pymongo==4.0.2
 DateTime
 asyncio
