@@ -32,8 +32,8 @@ wget
 wikipedia==1.4.0
 httpx
 pyrogram
-motor==2.5.1
-pymongo==4.0.2
+motor
+pymongo==4.0.1
 DateTime
 asyncio
 python-arq
