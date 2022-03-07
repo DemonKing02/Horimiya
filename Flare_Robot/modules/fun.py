@@ -1,4 +1,5 @@
 import re
+import random
 
 import requests as r
 from telegram import MAX_MESSAGE_LENGTH, ParseMode, Update
