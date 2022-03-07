@@ -1,4 +1,5 @@
 import re
+import html
 import random
 
 import requests as r
