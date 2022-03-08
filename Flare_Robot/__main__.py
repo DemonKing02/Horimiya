@@ -80,9 +80,11 @@ def get_readable_time(seconds: int) -> str:
 PM_START_TEXT = """
 ────「 {} 」────
 *Heyaa! {},*
-* I am a Kwaii ProBot with so many Advance & Cool Robot With So Many Advance Features
+* I am a Kwaii ProBot with so many Advance & Cool Robot With So Many Advance Features.
+⋇⋆✦⋆⋇————————————————⋇⋆✦⋆⋇
 ➷ *Uptime:* {}
 ➷ `{}` *users, across* `{}` *chats.*
+⋇⋆✦⋆⋇————————————————⋇⋆✦⋆⋇
 ➹ Try The Help Buttons Below To Know My Abilities[.](https://telegra.ph/file/87fc99fdb207271b9439a.jpg) ××
 """
 
@@ -125,7 +127,7 @@ HELP_MSG = "Click the button below to get help manu in your pm."
 FLARE_IMG = "https://telegra.ph/file/9720f17d6d8fb47a0ae58.mp4"
 HELP_IMG = "https://telegra.ph/file/83b00bff39cb132dd3795.jpg"
 
-DONATE_STRING = """Heya, glad to hear you want to donate but Kawaii is free for everyone!!!"""
+DONATE_STRING = """Heya, glad to hear you want to donate! but our Bot is free for all"""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -188,7 +190,7 @@ def send_help(chat_id, text, keyboard=None):
 
 def test(update: Update, context: CallbackContext):
     # pprint(eval(str(update)))
-    # update.effective_message.reply_text("Heyaa tester! _I_ *have* `markdown`", parse_mode=ParseMode.MARKDOWN)
+    # update.effective_message.reply_text("Hola tester! _I_ *have* `markdown`", parse_mode=ParseMode.MARKDOWN)
     update.effective_message.reply_text("This person edited a message")
     print(update.effective_message)
 
@@ -235,14 +237,16 @@ def start(update: Update, context: CallbackContext):
                     escape_markdown(first_name),
                     escape_markdown(uptime),
                     sql.num_users(),
-                    sql.num_chats()),                        
+                    sql.num_chats(),
+                ),
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
             )
     else:
         update.effective_message.reply_animation(
-            FLARE_IMG, caption= "<b>Hoi-Hoi it's a Kawaii!!!\nHaven't sleep since</b>: <code>{}</code>".format(
+            FLARE_IMG,
+            caption="<b>Hoi-Hoi! I am a kawaii!\nHaven't sleep since</b>: <code>{}</code>".format(
                 uptime
             ),
             parse_mode=ParseMode.HTML,
@@ -255,13 +259,12 @@ def start(update: Update, context: CallbackContext):
                         ),
                         InlineKeyboardButton(
                             text="📢 Updates",
-                            url="https://telegram.dog/Kawaii_Updates",
+                            url="https://t.me/Kawaii_Updates",
                         ),
                     ]
                 ]
             ),
         )
-
 
 
 # for test purposes
@@ -617,7 +620,7 @@ def main():
         try:
             dispatcher.bot.sendMessage(
                 f"@{SUPPORT_CHAT}",
-                "[Hehe now, Kawaii is super charged with beaty!!](https://telegra.ph/file/72792bfea6576f0ea1873.mp4)",
+                "[Hehe, now Kawaii got fully charged of Beauty!!](https://telegra.ph/file/72792bfea6576f0ea1873.mp4)",
                 parse_mode=ParseMode.MARKDOWN,
             )
         except Unauthorized:
@@ -667,7 +670,7 @@ def main():
 
     else:
         LOGGER.info("Using long polling.")
-        updater.start_polling(timeout=15, read_latency=4, drop_pending_updates=True, allowed_updates=Update.ALL_TYPES)
+        updater.start_polling(timeout=15, read_latency=4, clean=True)
 
     if len(argv) not in (1, 3, 4):
         telethn.disconnect()
