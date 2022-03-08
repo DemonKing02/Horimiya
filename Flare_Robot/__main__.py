@@ -25,9 +25,6 @@ from Flare_Robot import (
     BOT_USERNAME,
     BOT_NAME,
     EVENT_LOGS,
-    HELP_IMG,
-    GROUP_START_IMG,
-    CUTIEPII_PHOTO,
     dispatcher,
     StartTime,
     telethn,
@@ -65,6 +62,11 @@ from telegram.ext.dispatcher import DispatcherHandlerStop, run_async
 from telegram.utils.helpers import escape_markdown
 from pyrogram import Client, idle
 from telethon import Button, events
+
+CUTIEPII_PHOTO = "https://telegra.ph/file/83b00bff39cb132dd3795.jpg"
+GROUP_START_IMG = "https://telegra.ph/file/83b00bff39cb132dd3795.jpg"
+HELP_IMG = "https://telegra.ph/file/83b00bff39cb132dd3795.jpg"
+
 
 @telethn.on(events.NewMessage(pattern="/alive"))
 async def awake(event):
