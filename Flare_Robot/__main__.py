@@ -80,38 +80,36 @@ def get_readable_time(seconds: int) -> str:
 PM_START_TEXT = """
 ────「 {} 」────
 *Heyaa! {},*
-* You Know me! I am a Advance & Cool Robot With So Many Sexy Features.*
-[•°•°•°•°•°•°•°•°•°•°•°]
-♛┈⛧✾✾✾┈┈•༶༶•┈┈⛧✾✾✾┈♛
+* I am a Kwaii ProBot with so many Advance & Cool Robot With So Many Advance Features
+»»»»»————————————————>
 ➷ *Uptime:* {}
 ➷ `{}` *users, across* `{}` *chats.*
-[•°•°•°•°•°•°•°•°•°•°•°]
-♛┈⛧✾✾✾┈┈•༶༶•┈┈⛧✾✾✾┈♛
-➹ Try The Help Buttons Below To Know My Abilities[.](https://telegra.ph/file/f0f24de946ae4ed27340b.jpg) ××
+<—————————————————«««««
+➹ Try The Help Buttons Below To Know My Abilities[.](https://telegra.ph/file/87fc99fdb207271b9439a.jpg) ××
 """
 
 buttons = [
     [
         InlineKeyboardButton(
-            text=f"Add Flare To Your Group", url=f"t.me/Flare_Robot?startgroup=true"
+            text=f"Add Kawaii To Your Group", url=f"t.me/Kawaii_probot?startgroup=true"
         )
     ],
     [
         InlineKeyboardButton(text="[► Help ◄]", callback_data="help_back"),
         InlineKeyboardButton(
-            text="❔ Chit Chat", url="https://t.me/Otaku_gang1"
+            text="❔ Chit Chat", url="1"
         ),
         InlineKeyboardButton(text="[► Inline ◄]", switch_inline_query_current_chat=""),
     ],
     [
-        InlineKeyboardButton(text="🚑Sexy Support", url=f"https://t.me/{SUPPORT_CHAT}"),
-        InlineKeyboardButton(text="📡Sexy Updates", url="https://t.me/Hottie_Updates"),
+        InlineKeyboardButton(text="🚑Kawaii Support", url=f"https://t.me/{SUPPORT_CHAT}"),
+        InlineKeyboardButton(text="📡Kawaii Updates", url="https://t.me/Kawaii_Updates"),
     ],
 ]
 
 
 HELP_STRINGS = """
-Main commands available[.](https://telegra.ph//file/81b18388bd4bcde77af22.jpg)
+Main commands available[.](https://telegra.ph/file/83b00bff39cb132dd3795.jpg)
  ➢ /help: PM's you this message.
  ➢ /help <module name>: PM's you info about that module.
  ➢ /donate: information on how to donate!
@@ -126,10 +124,10 @@ Main commands available[.](https://telegra.ph//file/81b18388bd4bcde77af22.jpg)
 )
 
 HELP_MSG = "Click the button below to get help manu in your pm."
-FLARE_IMG = "https://telegra.ph/file/e8c4d69dee7f7e381ea61.mp4"
-HELP_IMG = "https://telegra.ph/file/b2544b2b8f1cc3d4f0ddb.jpg"
+FLARE_IMG = "https://telegra.ph/file/9720f17d6d8fb47a0ae58.mp4"
+HELP_IMG = "https://telegra.ph/file/83b00bff39cb132dd3795.jpg"
 
-DONATE_STRING = """Heya, glad to hear you want to donate but Flare is free for everyone!!!"""
+DONATE_STRING = """Heya, glad to hear you want to donate but Kawaii is free for everyone!!!"""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -248,7 +246,7 @@ def start(update: Update, context: CallbackContext):
     else:
         update.effective_message.reply_photo(
             FLARE_IMG,
-            caption="<b>The Sexy is Horny again!! !\nHaven't sleep since</b>: <code>{}</code>".format(
+            caption="<b>Hoi-Hoi it's a kawaii!! !\nHaven't sleep since</b>: <code>{}</code>".format(
                 uptime
             ),
             parse_mode=ParseMode.HTML,
@@ -256,12 +254,12 @@ def start(update: Update, context: CallbackContext):
                 [
                     [
                         InlineKeyboardButton(
-                            text="🚑Sexy Support",
+                            text="🚑Kawaii Support",
                             url=f"https://telegram.dog/{SUPPORT_CHAT}",
                         ),
                         InlineKeyboardButton(
-                            text="📢Sexy Updates",
-                            url="https://t.me/Freia_Updates",
+                            text="📢Kawaii Updates",
+                            url="https://t.me/Kawaii_Updates",
                         ),
                     ]
                 ]
@@ -622,7 +620,7 @@ def main():
         try:
             dispatcher.bot.sendMessage(
                 f"@{SUPPORT_CHAT}",
-                "[Yamate-Yamate Kudasai!!](https://telegra.ph/file/c95dbc16b8b84ab8ecc00.mp4)",
+                "[Hehe now, Kawaii is super charged with beaty!!](https://telegra.ph/file/72792bfea6576f0ea1873.mp4)",
                 parse_mode=ParseMode.MARKDOWN,
             )
         except Unauthorized:
