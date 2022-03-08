@@ -81,7 +81,7 @@ PM_START_TEXT = """
 ────「 {} 」────
 *Heyaa! {},*
 * I am a Kwaii ProBot with so many Advance & Cool Robot With So Many Advance Features
-⋇⋆✦⋆⋇　————————————————⋇⋆✦⋆⋇　
+⋇⋆✦⋆⋇—————————————————⋇⋆✦⋆⋇　
 ➷ *Uptime:* {}
 ➷ `{}` *users, across* `{}` *chats.*
 ⋇⋆✦⋆⋇—————————————————⋇⋆✦⋆⋇　
@@ -237,16 +237,14 @@ def start(update: Update, context: CallbackContext):
                     escape_markdown(first_name),
                     escape_markdown(uptime),
                     sql.num_users(),
-                    sql.num_chats(),
-                ),
+                    sql.num_chats()),                        
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
             )
     else:
-        update.effective_message.reply_photo(
-            FLARE_IMG,
-            caption="<b>Hoi-Hoi it's a kawaii!! !\nHaven't sleep since</b>: <code>{}</code>".format(
+        update.effective_message.reply_animation(
+            FLARE_IMG, caption= "<b>Hoi-Hoi it's a Kawaii!!!\nHaven't sleep since</b>: <code>{}</code>".format(
                 uptime
             ),
             parse_mode=ParseMode.HTML,
@@ -254,17 +252,18 @@ def start(update: Update, context: CallbackContext):
                 [
                     [
                         InlineKeyboardButton(
-                            text="🚑Kawaii Support",
+                            text="🚑 Support",
                             url=f"https://telegram.dog/{SUPPORT_CHAT}",
                         ),
                         InlineKeyboardButton(
-                            text="📢Kawaii Updates",
-                            url="https://t.me/Kawaii_Updates",
+                            text="📢 Updates",
+                            url="https://telegram.dog/Kawaii_Updates",
                         ),
                     ]
                 ]
             ),
         )
+
 
 
 # for test purposes
