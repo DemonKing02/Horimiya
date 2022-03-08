@@ -81,10 +81,10 @@ PM_START_TEXT = """
 ────「 {} 」────
 *Heyaa! {},*
 * I am a Kwaii ProBot with so many Advance & Cool Robot With So Many Advance Features
-»»»»»————————————————>
+⋇⋆✦⋆⋇　————————————————⋇⋆✦⋆⋇　
 ➷ *Uptime:* {}
 ➷ `{}` *users, across* `{}` *chats.*
-<—————————————————«««««
+⋇⋆✦⋆⋇—————————————————⋇⋆✦⋆⋇　
 ➹ Try The Help Buttons Below To Know My Abilities[.](https://telegra.ph/file/87fc99fdb207271b9439a.jpg) ××
 """
 
