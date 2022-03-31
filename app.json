@@ -1,4 +1,5 @@
-      "name": "FlareRobot",
+{
+            "name": "FlareRobot",
       "description": "An Anime themed Telegram group management bot.",
       "keywords": [
          "telegram",
