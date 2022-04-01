@@ -80,7 +80,7 @@ def get_readable_time(seconds: int) -> str:
 PM_START_TEXT = """
 ────「 {} 」────
 *Heyaa! {},*
-*  I am an Anime themed advance group management bot with a lots of Kawaii Features.
+*I am an Anime themed advance group management bot with a lots of Kawaii Features.
 ❃⋆✦⋆──────────────⋆✦⋆❃
 ➷ *Uptime:* {}
 ➷ `{}` *users are Kawaii
@@ -246,7 +246,7 @@ def start(update: Update, context: CallbackContext):
                 timeout=60,
             )
     else:
-        update.effective_message.reply_photo(
+        update.effective_message.reply_animation(
             FLARE_IMG,
             caption="<b>Hoi-Hoi! It's me the Kawaii;)!\nHaven't sleep since</b>: <code>{}</code>".format(
                 uptime
