@@ -78,38 +78,38 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-────「 {} 」────
-*Heyaa! {},*
-* I am a Kwaii ProBot with so many Advance & Cool Robot With So Many Advance Features.
-⋇⋆✦⋆⋇————————————————⋇⋆✦⋆⋇
-➷ *Uptime:* {}
-➷ `{}` *users, across* `{}` *chats.*
-⋇⋆✦⋆⋇————————————————⋇⋆✦⋆⋇
-➹ Try The Help Buttons Below To Know My Abilities[.](https://telegra.ph/file/87fc99fdb207271b9439a.jpg) ××
+────「 [{}](https://telegra.ph/file/7153ff6d5a0e2711f24d7.jpg) 」────
+*Whassup! {},*
+*I am an Anime themed advance group management bot with a lot of Hot Features.*
+➖➖➖➖➖➖➖➖➖➖➖➖➖
+• *Uptime:* `{}`
+• `{}` *users, across* `{}` *chats.*
+➖➖➖➖➖➖➖➖➖➖➖➖➖
+➢ Try The Help Buttons Below To Know My Abilities ❃❃
 """
 
 buttons = [
     [
         InlineKeyboardButton(
-            text=f"Add Kawaii To Your Group", url=f"t.me/Kawaii_probot?startgroup=true"
+            text=f"Add Hottie To Your Group", url=f"t.me/Hottie_Robot?startgroup=true"
         )
     ],
     [
         InlineKeyboardButton(text="[► Help ◄]", callback_data="help_back"),
         InlineKeyboardButton(
-            text="❔ Chit Chat", url="1"
+            text="❔ Chit Chat", url="https://t.me/Anime_python_coding"
         ),
         InlineKeyboardButton(text="[► Inline ◄]", switch_inline_query_current_chat=""),
     ],
     [
-        InlineKeyboardButton(text="🚑Kawaii Support", url=f"https://t.me/{SUPPORT_CHAT}"),
-        InlineKeyboardButton(text="📡Kawaii Updates", url="https://t.me/Kawaii_Updates"),
+        InlineKeyboardButton(text="❄️ Support", url=f"https://t.me/{SUPPORT_CHAT}"),
+        InlineKeyboardButton(text="☃️ Updates", url="https://t.me/Hottie_Updates"),
     ],
 ]
 
 
 HELP_STRINGS = """
-Main commands available[.](https://telegra.ph/file/83b00bff39cb132dd3795.jpg)
+Main commands available[.](https://telegra.ph//file/81b18388bd4bcde77af22.jpg)
  ➢ /help: PM's you this message.
  ➢ /help <module name>: PM's you info about that module.
  ➢ /donate: information on how to donate!
@@ -124,10 +124,11 @@ Main commands available[.](https://telegra.ph/file/83b00bff39cb132dd3795.jpg)
 )
 
 HELP_MSG = "Click the button below to get help manu in your pm."
-FLARE_IMG = "https://telegra.ph/file/9720f17d6d8fb47a0ae58.mp4"
-HELP_IMG = "https://telegra.ph/file/83b00bff39cb132dd3795.jpg"
+HOTTIE_IMG = "https://telegra.ph/file/08b3256ecac791444cbf2.jpg"
+HELP_IMG = "https://telegra.ph/file/69866f641bc97c73d146b.jpg"
 
-DONATE_STRING = """Heya, glad to hear you want to donate! but our Bot is free for all"""
+DONATE_STRING = """Heya, glad to hear you want to donate!
+Click here to donate in [Paypal](https://ko-fi.com/aasfcyberking)"""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -244,9 +245,9 @@ def start(update: Update, context: CallbackContext):
                 timeout=60,
             )
     else:
-        update.effective_message.reply_animation(
-            FLARE_IMG,
-            caption="<b>Hoi-Hoi! I am a kawaii!\nHaven't sleep since</b>: <code>{}</code>".format(
+        update.effective_message.reply_photo(
+            HOTTIE_IMG,
+            caption="<b>Yes, Darling I'm alive!\nHaven't sleep since</b>: <code>{}</code>".format(
                 uptime
             ),
             parse_mode=ParseMode.HTML,
@@ -259,7 +260,7 @@ def start(update: Update, context: CallbackContext):
                         ),
                         InlineKeyboardButton(
                             text="📢 Updates",
-                            url="https://t.me/Kawaii_Updates",
+                            url="https://t.me/Hottie_Updates",
                         ),
                     ]
                 ]
@@ -620,7 +621,7 @@ def main():
         try:
             dispatcher.bot.sendMessage(
                 f"@{SUPPORT_CHAT}",
-                "[Hehe, now Kawaii got fully charged of Beauty!!](https://telegra.ph/file/72792bfea6576f0ea1873.mp4)",
+                "[Hottie Is Online❄️](https://telegra.ph/file/c71a45e84481ac6a3a93a.jpg)",
                 parse_mode=ParseMode.MARKDOWN,
             )
         except Unauthorized:
