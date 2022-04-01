@@ -136,12 +136,6 @@ def sanitize(update: Update, context: CallbackContext):
     reply_animation(random.choice(fun.GIFS), caption=f"*Sanitizes {name}*")
 
 
-def hug(update, context):
-    msg = update.effective_message
-    target = "cuddle"
-    msg.reply_video(nekos.img(target))
-
-
 @typing_action
 def abuse(update, context):
     # reply to correct message
