@@ -80,7 +80,7 @@ def get_readable_time(seconds: int) -> str:
 PM_START_TEXT = """
 ────「 {} 」────
 *Heyaa! {},*
-* I am a Kawaii ProBot with so many Advance & Cool Robot With So Many Advance Features.
+*  I am an Anime themed advance group management bot with a lots of Kawaii Features.
 ❃⋆✦⋆──────────────⋆✦⋆❃
 ➷ *Uptime:* {}
 ➷ `{}` *users are Kawaii
@@ -110,7 +110,7 @@ buttons = [
 
 
 HELP_STRINGS = """
-Main commands available[.](https://telegra.ph//file/81b18388bd4bcde77af22.jpg)
+Main commands available[.](https://telegra.ph/file/83b00bff39cb132dd3795.jpg)
  ➢ /help: PM's you this message.
  ➢ /help <module name>: PM's you info about that module.
  ➢ /donate: information on how to donate!
@@ -125,8 +125,8 @@ Main commands available[.](https://telegra.ph//file/81b18388bd4bcde77af22.jpg)
 )
 
 HELP_MSG = "Click the button below to get help manu in your pm."
-FLARE_IMG = "https://telegra.ph/file/08b3256ecac791444cbf2.jpg"
-HELP_IMG = "https://telegra.ph/file/69866f641bc97c73d146b.jpg"
+FLARE_IMG = "https://telegra.ph/file/9720f17d6d8fb47a0ae58.mp4"
+HELP_IMG = "https://telegra.ph/file/83b00bff39cb132dd3795.jpg"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
 But Kawaii is free for everyone"""
