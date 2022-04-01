@@ -319,9 +319,8 @@ def copypasta(update, context):
             "🚰",
         ]
         reply_text = random.choice(emojis)
-        b_char = random.choice(
-            message.reply_to_message.text
-        ).lower()  # choose a random character in the message to be substituted with 🅱️
+        # choose a random character in the message to be substituted with 🅱️
+        b_char = random.choice(message.reply_to_message.text).lower()
         for c in message.reply_to_message.text:
             if c == " ":
                 reply_text += random.choice(emojis)
@@ -331,10 +330,7 @@ def copypasta(update, context):
             elif c.lower() == b_char:
                 reply_text += "🅱️"
             else:
-                if bool(random.getrandbits(1)):
-                    reply_text += c.upper()
-                else:
-                    reply_text += c.lower()
+                reply_text += c.upper() if bool(random.getrandbits(1)) else c.lower()
         reply_text += random.choice(emojis)
         message.reply_to_message.reply_text(reply_text)
 
