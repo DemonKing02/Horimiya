@@ -78,15 +78,16 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-────「 [{}](https://telegra.ph/file/7153ff6d5a0e2711f24d7.jpg) 」────
-*Whassup! {},*
-*I am an Anime themed advance group management bot with a lot of Hot Features.*
-➖➖➖➖➖➖➖➖➖➖➖➖➖
-• *Uptime:* `{}`
-• `{}` *users, across* `{}` *chats.*
-➖➖➖➖➖➖➖➖➖➖➖➖➖
-➢ Try The Help Buttons Below To Know My Abilities ❃❃
+────「 {} 」────
+*Heyaa! {},*
+* I am a Kwaii ProBot with so many Advance & Cool Robot With So Many Advance Features.
+⋇⋆✦⋆⋇————————————————⋇⋆✦⋆⋇
+➷ *Uptime:* {}
+➷ `{}` *users, across* `{}` *chats.*
+⋇⋆✦⋆⋇————————————————⋇⋆✦⋆⋇
+➹ Try The Help Buttons Below To Know My Abilities[.](https://telegra.ph/file/87fc99fdb207271b9439a.jpg) ××
 """
+
 
 buttons = [
     [
@@ -621,7 +622,7 @@ def main():
         try:
             dispatcher.bot.sendMessage(
                 f"@{SUPPORT_CHAT}",
-                "[Hottie Is Online❄️](https://telegra.ph/file/c71a45e84481ac6a3a93a.jpg)",
+                "[Hehe, now Kawaii got fully charged of Beauty!!](https://telegra.ph/file/72792bfea6576f0ea1873.mp4)",
                 parse_mode=ParseMode.MARKDOWN,
             )
         except Unauthorized:
