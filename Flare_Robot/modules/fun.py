@@ -1,6 +1,6 @@
-import re
 import html
 import random
+import re
 
 import requests as r
 from telegram import MAX_MESSAGE_LENGTH, ParseMode, Update
@@ -134,6 +134,50 @@ def sanitize(update: Update, context: CallbackContext):
         else message.reply_animation
     )
     reply_animation(random.choice(fun.GIFS), caption=f"*Sanitizes {name}*")
+
+
+@typing_action
+def hug(update, context):
+    args = context.args
+    msg = update.effective_message  # type: Optional[Message]
+
+    # reply to correct message
+    reply_text = (
+        msg.reply_to_message.reply_text if msg.reply_to_message else msg.reply_text
+    )
+
+    # get user who sent message
+    if msg.from_user.username:
+        curr_user = "@" + escape_markdown(msg.from_user.username)
+    else:
+        curr_user = "[{}](tg://user?id={})".format(
+            msg.from_user.first_name, msg.from_user.id
+        )
+
+    user_id = extract_user(update.effective_message, args)
+    if user_id:
+        hugged_user = context.bot.get_chat(user_id)
+        user1 = curr_user
+        if hugged_user.username:
+            user2 = "@" + escape_markdown(hugged_user.username)
+        else:
+            user2 = "[{}](tg://user?id={})".format(
+                hugged_user.first_name, hugged_user.id
+            )
+
+    # if no target found, bot targets the sender
+    else:
+        user1 = "Awwh! [{}](tg://user?id={})".format(
+            context.bot.first_name, context.bot.id
+        )
+        user2 = curr_user
+
+    temp = random.choice(fun.HUG_TEMPLATES)
+    hug = random.choice(fun.HUG)
+
+    repl = temp.format(user1=user1, user2=user2, hug=hug)
+
+    reply_text(repl, parse_mode=ParseMode.MARKDOWN)
 
 
 @typing_action
@@ -319,8 +363,9 @@ def copypasta(update, context):
             "🚰",
         ]
         reply_text = random.choice(emojis)
-        # choose a random character in the message to be substituted with 🅱️
-        b_char = random.choice(message.reply_to_message.text).lower()
+        b_char = random.choice(
+            message.reply_to_message.text
+        ).lower()  # choose a random character in the message to be substituted with 🅱️
         for c in message.reply_to_message.text:
             if c == " ":
                 reply_text += random.choice(emojis)
@@ -330,7 +375,10 @@ def copypasta(update, context):
             elif c.lower() == b_char:
                 reply_text += "🅱️"
             else:
-                reply_text += c.upper() if bool(random.getrandbits(1)) else c.lower()
+                if bool(random.getrandbits(1)):
+                    reply_text += c.upper()
+                else:
+                    reply_text += c.lower()
         reply_text += random.choice(emojis)
         message.reply_to_message.reply_text(reply_text)
 
@@ -442,17 +490,22 @@ __help__ = """
  ❃ /plet <text>*:* make ur text sticker in different colours
  
  ❃ /truth or /dare*:* Send random truth or dare.
+
 *Memes*
 ❃ /hitler*:* Quote a message and type this command to make a caption of hitler
 ❃ /mock*:* Does the same as /hitler but spongemock instead
 ❃ /kim*:* Does the same as /hitler but with Kim Jong Un instead (O no plox dont bomb my house)
 ❃ /rmeme*:* Sends random meme scraped from reddit
 *Regex based memes:*
+
 ❃ /decide can be also used with regex like: `Hottie? <question>: randomly answer "Yes, No" etc.`
+
 Some other regex filters are:
 `goodmorning`, `good morning` or `goodnight`, `good night`.
+
 Hottie will reply random strings accordingly when these words are used!
 All regex filters can be disabled incase u don't want... like: `/disable goodnight`.
+
 """
 
 __mod_name__ = "Fun"
@@ -472,6 +525,7 @@ ABUSE_HANDLER = DisableAbleCommandHandler(
 )
 RUNS_HANDLER = DisableAbleCommandHandler("runs", runs, pass_args=True, run_async=True)
 SLAP_HANDLER = DisableAbleCommandHandler("slap", slap, run_async=True)
+HUG_HANDLER = DisableAbleCommandHandler("hug", hug, run_async=True)
 GBUN_HANDLER = CommandHandler("gbun", gbun, run_async=True)
 GBAM_HANDLER = CommandHandler("gbam", gbam, run_async=True)
 TABLE_HANDLER = DisableAbleCommandHandler("table", table, run_async=True)
@@ -508,6 +562,7 @@ dispatcher.add_handler(DECIDE_HANDLER)
 dispatcher.add_handler(ABUSE_HANDLER)
 dispatcher.add_handler(RUNS_HANDLER)
 dispatcher.add_handler(SLAP_HANDLER)
+dispatcher.add_handler(HUG_HANDLER)
 dispatcher.add_handler(GBUN_HANDLER)
 dispatcher.add_handler(TABLE_HANDLER)
 dispatcher.add_handler(RECITE_HANDLER)
