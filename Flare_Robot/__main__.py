@@ -81,35 +81,36 @@ PM_START_TEXT = """
 ────「 {} 」────
 *Heyaa! {},*
 * I am a Kawaii ProBot with so many Advance & Cool Robot With So Many Advance Features.
-❃⋆✦⋆————————————————⋆✦⋆❃
+❃⋆✦⋆──────────────⋆✦⋆❃
 ➷ *Uptime:* {}
-➷ `{}` *users Are Kwaii!!💗
-❃⋆✦⋆————————————————⋆✦⋆❃
+➷ `{}` *users are Kawaii
+❃⋆✦⋆──────────────⋆✦⋆❃
 ➹ Try The Help Buttons Below To Know My Abilities[.](https://telegra.ph/file/87fc99fdb207271b9439a.jpg) ××
 """
+
 
 buttons = [
     [
         InlineKeyboardButton(
-            text=f"Add Kawaii To Your Group", url=f"t.me/Kawaii_probot?startgroup=true"
+            text=f"Add Cute kawaii To Your Group", url=f"t.me/Kawai_probot?startgroup=true"
         )
     ],
     [
         InlineKeyboardButton(text="[► Help ◄]", callback_data="help_back"),
         InlineKeyboardButton(
-            text="❔ Chit Chat", url="1"
+            text="🌎Chit Chat", url="https://t.me/Freia_Support"
         ),
         InlineKeyboardButton(text="[► Inline ◄]", switch_inline_query_current_chat=""),
     ],
     [
-        InlineKeyboardButton(text="🚑Kawaii Support", url=f"https://t.me/{SUPPORT_CHAT}"),
-        InlineKeyboardButton(text="📡Kawaii Updates", url="https://t.me/Kawaii_Updates"),
+        InlineKeyboardButton(text="🚑Support", url=f"https://t.me/{SUPPORT_CHAT}"),
+        InlineKeyboardButton(text="📡Updates", url="https://t.me/Freia_Updates"),
     ],
 ]
 
 
 HELP_STRINGS = """
-Main commands available[.](https://telegra.ph/file/83b00bff39cb132dd3795.jpg)
+Main commands available[.](https://telegra.ph//file/81b18388bd4bcde77af22.jpg)
  ➢ /help: PM's you this message.
  ➢ /help <module name>: PM's you info about that module.
  ➢ /donate: information on how to donate!
@@ -124,10 +125,11 @@ Main commands available[.](https://telegra.ph/file/83b00bff39cb132dd3795.jpg)
 )
 
 HELP_MSG = "Click the button below to get help manu in your pm."
-FLARE_IMG = "https://telegra.ph/file/9720f17d6d8fb47a0ae58.mp4"
-HELP_IMG = "https://telegra.ph/file/83b00bff39cb132dd3795.jpg"
+FLARE_IMG = "https://telegra.ph/file/08b3256ecac791444cbf2.jpg"
+HELP_IMG = "https://telegra.ph/file/69866f641bc97c73d146b.jpg"
 
-DONATE_STRING = """Heya, glad to hear you want to donate! but our Bot is free for all"""
+DONATE_STRING = """Heya, glad to hear you want to donate!
+But Kawaii is free for everyone"""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -244,9 +246,9 @@ def start(update: Update, context: CallbackContext):
                 timeout=60,
             )
     else:
-        update.effective_message.reply_animation(
+        update.effective_message.reply_photo(
             FLARE_IMG,
-            caption="<b>Hoi-Hoi! I am a kawaii!\nHaven't sleep since</b>: <code>{}</code>".format(
+            caption="<b>Hoi-Hoi! It's me the Kawaii;)!\nHaven't sleep since</b>: <code>{}</code>".format(
                 uptime
             ),
             parse_mode=ParseMode.HTML,
@@ -259,7 +261,7 @@ def start(update: Update, context: CallbackContext):
                         ),
                         InlineKeyboardButton(
                             text="📢 Updates",
-                            url="https://t.me/Kawaii_Updates",
+                            url="https://t.me/Freia_Updates",
                         ),
                     ]
                 ]
@@ -670,7 +672,7 @@ def main():
 
     else:
         LOGGER.info("Using long polling.")
-        updater.start_polling(timeout=15, read_latency=4, drop_pending_updates=True, allowed_updates=Update.ALL_TYPES)
+        updater.start_polling(timeout=15, read_latency=4, clean=True)
 
     if len(argv) not in (1, 3, 4):
         telethn.disconnect()
