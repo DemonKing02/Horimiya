@@ -44,3 +44,4 @@ pymongo[srv]
 TgCrypto
 google_trans_new
 yt_dlp
+tswift
