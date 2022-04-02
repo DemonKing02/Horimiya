@@ -23,8 +23,8 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import escape_markdown, mention_html, mention_markdown
 
-import Hottie_Robot.modules.sql.welcome_sql as sql
-from Hottie_Robot import (
+import Flare_Robot.modules.sql.welcome_sql as sql
+from Flare_Robot import (
     DEMONS,
     DEV_USERS,
     DRAGONS,
@@ -35,19 +35,19 @@ from Hottie_Robot import (
     dispatcher,
     sw,
 )
-from Hottie_Robot.modules.helper_funcs.chat_status import (
+from Flare_Robot.modules.helper_funcs.chat_status import (
     is_user_ban_protected,
     user_admin,
 )
-from Hottie_Robot.modules.helper_funcs.handlers import MessageHandlerChecker
-from Hottie_Robot.modules.helper_funcs.misc import build_keyboard, revert_buttons
-from Hottie_Robot.modules.helper_funcs.msg_types import get_welcome_type
-from Hottie_Robot.modules.helper_funcs.string_handling import (
+from Flare_Robot.modules.helper_funcs.handlers import MessageHandlerChecker
+from Flare_Robot.modules.helper_funcs.misc import build_keyboard, revert_buttons
+from Flare_Robot.modules.helper_funcs.msg_types import get_welcome_type
+from Flare_Robot.modules.helper_funcs.string_handling import (
     escape_invalid_curly_brackets,
     markdown_parser,
 )
-from Hottie_Robot.modules.log_channel import loggable
-from Hottie_Robot.modules.sql.global_bans_sql import is_user_gbanned
+from Flare_Robot.modules.log_channel import loggable
+from Flare_Robot.modules.sql.global_bans_sql import is_user_gbanned
 
 VALID_WELCOME_FORMATTERS = [
     "first",
