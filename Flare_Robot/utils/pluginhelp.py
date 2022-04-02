@@ -13,7 +13,7 @@ from pyrogram.errors import FloodWait, MessageNotModified
 from pyrogram.types import Chat, Message, User
 
 from Flare_Robot import OWNER_ID, SUPPORT_CHAT
-from Flare_Robot import pgram
+from Flare_Robot import pbot as pgram
 from Flare_Robot.utils.errors import split_limits
 
 
