@@ -3,10 +3,10 @@
 import aiohttp
 from pyrogram import filters
 
-from Hottie_Robot import pbot as asuna
+from Flare_Robot import pbot
 
 
-@asuna.on_message(filters.command("pokedex"))
+@pbot.on_message(filters.command("pokedex"))
 async def PokeDex(_, message):
     if len(message.command) != 2:
         await message.reply_text("/pokedex Pokemon Name")
