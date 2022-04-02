@@ -6,9 +6,9 @@ from telethon import *
 from telethon.tl import functions, types
 from telethon.tl.types import *
 
-from Hottie_Robot import *
-from Hottie_Robot import telethn as tbot
-from Hottie_Robot.events import register
+from Flare_Robot import *
+from Flare_Robot import telethn as tbot
+from Flare_Robot.events import register
 
 
 async def is_register_admin(chat, user):
