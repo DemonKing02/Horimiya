@@ -6,8 +6,8 @@ from time import sleep
 from telegram import TelegramError, Update
 from telegram.ext import CallbackContext, CommandHandler
 
-from Hottie_Robot import dispatcher
-from Hottie_Robot.modules.helper_funcs.chat_status import dev_plus
+from Flare_Robot import dispatcher
+from Flare_Robot.modules.helper_funcs.chat_status import dev_plus
 
 
 @dev_plus
