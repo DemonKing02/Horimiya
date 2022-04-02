@@ -246,13 +246,7 @@ dispatcher = updater.dispatcher
 print("PYROGRAM CLIENT STARTING")
 session_name = TOKEN.split(":")[0]
 client = TelegramClient(MemorySession(), API_ID, API_HASH)
-pgram = Client(
-    session_name,
-    api_id=API_ID,
-    api_hash=API_HASH,
-    bot_token=TOKEN,
-)
-pbot = Client("FlarePyro", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
+pbot = Client("FlarePyro", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN, session_name)
 mongodb = MongoClient(MONGO_DB_URI, 27017)[MONGO_DB]
 motor = motor_asyncio.AsyncIOMotorClient(MONGO_DB_URI)
 db = motor[MONGO_DB]
@@ -278,21 +272,21 @@ async def get_entity(client, entity):
         try:
             entity = await client.get_chat(entity)
         except (PeerIdInvalid, ChannelInvalid):
-            for pgram in apps:
-                if pgram != client:
+            for pbot in apps:
+                if pbot != client:
                     try:
-                        entity = await pgram.get_chat(entity)
+                        entity = await pbot.get_chat(entity)
                     except (PeerIdInvalid, ChannelInvalid):
                         pass
                     else:
-                        entity_client = pgram
+                        entity_client = pbot
                         break
             else:
-                entity = await pgram.get_chat(entity)
-                entity_client = pgram
+                entity = await pbot.get_chat(entity)
+                entity_client = pbot
     return entity, entity_client
 
-apps = [pgram]
+apps = [pbot]
 DRAGONS = list(DRAGONS) + list(DEV_USERS)
 DEV_USERS = list(DEV_USERS)
 WOLVES = list(WOLVES)
