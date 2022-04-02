@@ -90,7 +90,7 @@ if ENV:
     API_ID = os.environ.get("API_ID", None)
     YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", True)
     API_HASH = os.environ.get("API_HASH", None)
-    DB_URL = os.environ.get("DATABSE_URL", "postgres://qzjdsqfv:4FqGkkMd5cTapST-n2N7kZ5Uct1hBCB1@castor.db.elephantsql.com/qzjdsqfv")
+    DB_URL = os.environ.get("DATABSE_URL", "postgresql://eptbyege:0TbLe5xjHocel_1kPTXvKyOi54oV8ywf@tyke.db.elephantsql.com/eptbyege")
     DONATION_LINK = os.environ.get("DONATION_LINK")
     LOAD = os.environ.get("LOAD", "").split()
     NO_LOAD = os.environ.get("NO_LOAD", "translation").split()
