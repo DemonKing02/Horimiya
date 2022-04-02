@@ -5,14 +5,14 @@ from pyrogram.types import Message
 
 from Flare_Robot import DRAGONS
 from Flare_Robot.utils.pluginhelp import member_permissions
-from Flare_Robot import pgram
+from Flare_Robot import pbot
 
 async def authorised(func, subFunc2, client, message, *args, **kwargs):
     chatID = message.chat.id
     try:
         await func(client, message, *args, **kwargs)
     except ChatWriteForbidden:
-        await pgram.leave_chat(chatID)
+        await pbot.leave_chat(chatID)
     except Exception as e:
         try:
             await message.reply_text(str(e))
@@ -30,7 +30,7 @@ async def unauthorised(message: Message, permission, subFunc2):
     try:
         await message.reply_text(text)
     except ChatWriteForbidden:
-        await pgram.leave_chat(chatID)
+        await pbot.leave_chat(chatID)
     return subFunc2
 
 
