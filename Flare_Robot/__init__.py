@@ -100,6 +100,7 @@ if ENV:
     MONGO_DB = "Flare"
     TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY", "./")
     BAN_STICKER = os.environ.get("BAN_STICKER", "CAADAgADOwADPPEcAXkko5EB3YGYAg")
+    MESSAGE_DUMP = os.environ.get("MESSAGE_DUMP", "-1001527971671")
     ALLOW_EXCL = os.environ.get("ALLOW_EXCL", False)
     CASH_API_KEY = os.environ.get("CASH_API_KEY", None)
     TIME_API_KEY = os.environ.get("TIME_API_KEY", None)
@@ -170,6 +171,7 @@ else:
     DB_URI = Config.SQLALCHEMY_DATABASE_URI
     DONATION_LINK = Config.DONATION_LINK
     LOAD = Config.LOAD
+    MESSAGE_DUMP = Config.MESSAGE_DUMP
     APP_ID = Config.APP_ID
     APP_HASH = Config.APP_HASH
     NO_LOAD = Config.NO_LOAD
