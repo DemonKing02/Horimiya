@@ -5,6 +5,7 @@ import requests
 import datetime
 import platform
 import time
+import subprocess
 
 from psutil import cpu_percent, virtual_memory, disk_usage, boot_time
 from platform import python_version
