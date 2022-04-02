@@ -3,7 +3,7 @@ import re
 
 from pyrogram import filters
 
-from Flare_Robot import pgram, BOT_USERNAME
+from Flare_Robot import pbot, BOT_USERNAME
 from Flare_Robot.utils.errors import capture_err
 from Flare_Robot.utils.permissions import adminsOnly
 from Flare_Robot.modules.mongo.karma_mongo import (alpha_to_int, get_karma,
@@ -16,7 +16,7 @@ karma_negative_group = 4
 regex_upvote = r"^((?i)\+|\+\+|\+1|thx|tx|owo|nice|piro|peru|pmro|themks|themku|tq|lol|lmao|noice|omp|op|tnx|ty|thank you|thanx|thanks|pro|cool|good|👍)$"
 regex_downvote = r"^(\-|\-\-|\-1|bhkk|bad|worse|worst|shit|👎)$"
 
-@pgram.on_message(
+@pbot.on_message(
     filters.text
     & filters.group
     & filters.incoming
@@ -57,7 +57,7 @@ async def upvote(_, message):
     )
 
 
-@pgram.on_message(
+@pbot.on_message(
     filters.text
     & filters.group
     & filters.incoming
@@ -99,7 +99,7 @@ async def downvote(_, message):
     )
 
 
-@pgram.on_message(filters.command("karma", f"karma@{BOT_USERNAME}") & filters.group)
+@pbot.on_message(filters.command("karma", f"karma@{BOT_USERNAME}") & filters.group)
 @capture_err
 async def command_karma(_, message):
     chat_id = message.chat.id
@@ -150,7 +150,7 @@ async def command_karma(_, message):
         await message.reply_text(f"**Total Points**: __{karma}__")
 
 
-@pgram.on_message(filters.command("karmas") & ~filters.private)
+@pbot.on_message(filters.command("karmas") & ~filters.private)
 @adminsOnly("can_change_info")
 async def captcha_state(_, message):
     usage = "**Usage:**\n/karmas [on|off]"
