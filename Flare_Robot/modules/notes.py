@@ -22,14 +22,14 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import escape_markdown, mention_markdown
 
-import Hottie_Robot.modules.sql.notes_sql as sql
-from Hottie_Robot import DRAGONS, JOIN_LOGGER, LOGGER, SUPPORT_CHAT, dispatcher
-from Hottie_Robot.modules.disable import DisableAbleCommandHandler
-from Hottie_Robot.modules.helper_funcs.chat_status import connection_status, user_admin
-from Hottie_Robot.modules.helper_funcs.handlers import MessageHandlerChecker
-from Hottie_Robot.modules.helper_funcs.misc import build_keyboard, revert_buttons
-from Hottie_Robot.modules.helper_funcs.msg_types import get_note_type
-from Hottie_Robot.modules.helper_funcs.string_handling import (
+import Flare_Robot.modules.sql.notes_sql as sql
+from Flare_Robot import DRAGONS, JOIN_LOGGER, LOGGER, SUPPORT_CHAT, dispatcher
+from Flare_Robot.modules.disable import DisableAbleCommandHandler
+from Flare_Robot.modules.helper_funcs.chat_status import connection_status, user_admin
+from Flare_Robot.modules.helper_funcs.handlers import MessageHandlerChecker
+from Flare_Robot.modules.helper_funcs.misc import build_keyboard, revert_buttons
+from Flare_Robot.modules.helper_funcs.msg_types import get_note_type
+from Flare_Robot.modules.helper_funcs.string_handling import (
     escape_invalid_curly_brackets,
 )
 
