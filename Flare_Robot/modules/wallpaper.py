@@ -4,8 +4,8 @@ import requests as r
 from telegram import Update
 from telegram.ext import CallbackContext, run_async
 
-from Hottie_Robot import SUPPORT_CHAT, WALL_API, dispatcher
-from Hottie_Robot.modules.disable import DisableAbleCommandHandler
+from Flare_Robot import SUPPORT_CHAT, WALL_API, dispatcher
+from Flare_Robot.modules.disable import DisableAbleCommandHandler
 
 # Wallpapers module by @TheRealPhoenix using wall.alphacoders.com
 
