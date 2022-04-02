@@ -2,7 +2,7 @@ import threading
 
 from sqlalchemy import Column, String
 
-from Hottie_Robot.modules.sql import BASE, SESSION
+from Flare_Robot.modules.sql import BASE, SESSION
 
 
 class ChatbotChats(BASE):
