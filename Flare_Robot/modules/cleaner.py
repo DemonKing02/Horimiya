@@ -3,15 +3,15 @@ import html
 from telegram import ParseMode, Update
 from telegram.ext import CallbackContext, CommandHandler, Filters, MessageHandler
 
-from Hottie_Robot import ALLOW_EXCL, CustomCommandHandler, dispatcher
-from Hottie_Robot.modules.disable import DisableAbleCommandHandler
-from Hottie_Robot.modules.helper_funcs.chat_status import (
+from Flare_Robot import ALLOW_EXCL, CustomCommandHandler, dispatcher
+from Flare_Robot.modules.disable import DisableAbleCommandHandler
+from Flare_Robot.modules.helper_funcs.chat_status import (
     bot_can_delete,
     connection_status,
     dev_plus,
     user_admin,
 )
-from Hottie_Robot.modules.sql import cleaner_sql as sql
+from Flare_Robot.modules.sql import cleaner_sql as sql
 
 if ALLOW_EXCL:
     CMD_STARTERS = ("/", "!")
