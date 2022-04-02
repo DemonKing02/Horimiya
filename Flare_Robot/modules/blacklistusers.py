@@ -6,8 +6,8 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler
 from telegram.utils.helpers import mention_html
 
-import Hottie_Robot.modules.sql.blacklistusers_sql as sql
-from Hottie_Robot import (
+import Flare_Robot.modules.sql.blacklistusers_sql as sql
+from Flare_Robot import (
     DEMONS,
     DEV_USERS,
     DRAGONS,
@@ -16,12 +16,12 @@ from Hottie_Robot import (
     WOLVES,
     dispatcher,
 )
-from Hottie_Robot.modules.helper_funcs.chat_status import dev_plus
-from Hottie_Robot.modules.helper_funcs.extraction import (
+from Flare_Robot.modules.helper_funcs.chat_status import dev_plus
+from Flare_Robot.modules.helper_funcs.extraction import (
     extract_user,
     extract_user_and_text,
 )
-from Hottie_Robot.modules.log_channel import gloggable
+from Flare_Robot.modules.log_channel import gloggable
 
 BLACKLISTWHITELIST = [OWNER_ID] + DEV_USERS + DRAGONS + WOLVES + DEMONS
 BLABLEUSERS = [OWNER_ID] + DEV_USERS
