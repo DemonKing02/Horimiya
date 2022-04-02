@@ -1,8 +1,8 @@
 from pyrogram import filters
 from pyrogram.types import Message
 
-from Hottie_Robot import pbot
-from Hottie_Robot.utils.errors import capture_err
+from Flare_Robot import pbot
+from Flare_Robot.utils.errors import capture_err
 
 
 @pbot.on_message(filters.command("webss"))
