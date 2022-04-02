@@ -3,8 +3,8 @@ from google_trans_new import LANGUAGES, google_translator
 from telegram import ParseMode, Update
 from telegram.ext import CallbackContext
 
-from Hottie_Robot import dispatcher
-from Hottie_Robot.modules.disable import DisableAbleCommandHandler
+from Flare_Robot import dispatcher
+from Flare_Robot.modules.disable import DisableAbleCommandHandler
 
 
 def totranslate(update: Update, context: CallbackContext):
