@@ -5,9 +5,9 @@ from telegram import Update
 from telegram.error import BadRequest, RetryAfter, Unauthorized
 from telegram.ext import CallbackContext, CommandHandler, Filters
 
-from Hottie_Robot import OWNER_ID, dispatcher
-from Hottie_Robot.modules.helper_funcs.extraction import extract_user
-from Hottie_Robot.modules.sql.users_sql import get_user_com_chats
+from Flare_Robot import OWNER_ID, dispatcher
+from Flare_Robot.modules.helper_funcs.extraction import extract_user
+from Flare_Robot.modules.sql.users_sql import get_user_com_chats
 
 
 def get_user_common_chats(update: Update, context: CallbackContext):
