@@ -43,3 +43,4 @@ cryptg==0.2.post4
 pymongo[srv]
 TgCrypto
 google_trans_new
+ptbcontrib
