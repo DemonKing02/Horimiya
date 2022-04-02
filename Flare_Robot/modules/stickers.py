@@ -16,8 +16,8 @@ from telegram import (
 from telegram.ext import CallbackContext
 from telegram.utils.helpers import mention_html
 
-from Hottie_Robot import dispatcher
-from Hottie_Robot.modules.disable import DisableAbleCommandHandler
+from Flare_Robot import dispatcher
+from Flare_Robot.modules.disable import DisableAbleCommandHandler
 
 combot_stickers_url = "https://combot.org/telegram/stickers?q="
 
