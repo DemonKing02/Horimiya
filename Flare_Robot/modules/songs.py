@@ -1,271 +1,156 @@
 import asyncio
-import json
-import os
-import time
+from os import path
 
-from telethon.tl.types import DocumentAttributeAudio
-from youtube_dl import YoutubeDL
-from youtube_dl.utils import (
-    ContentTooShortError,
-    DownloadError,
-    ExtractorError,
-    GeoRestrictedError,
-    MaxDownloadsReached,
-    PostProcessingError,
-    UnavailableVideoError,
-    XAttrMetadataError,
-)
+from pyrogram import filters
+from pyrogram.types import (InlineKeyboardMarkup, InputMediaPhoto, Message,
+                            Voice)
+from youtube_search import YoutubeSearch
 
-from Flare_Robot.events import register
-from Flare_Robot.utils import progress
+from Music import (BOT_USERNAME, DURATION_LIMIT, DURATION_LIMIT_MIN,
+                   MUSIC_BOT_NAME, app, db_mem)
+from Music.Decorators.permission import PermissionCheck
+from Music.Inline import song_download_markup, song_markup
+from Music.Utilities.url import get_url
+from Music.Utilities.youtube import get_yt_info_query, get_yt_info_query_slider
 
-try:
-
-    from youtubesearchpython import SearchVideos
-
-except:
-    os.system("pip install pip install youtube-search-python")
-    from youtubesearchpython import SearchVideos
+loop = asyncio.get_event_loop()
 
 
-@register(pattern="^/song (.*)")
-async def download_video(v_url):
-
-    lazy = v_url
-    sender = await lazy.get_sender()
-    me = await lazy.client.get_me()
-
-    if not sender.id == me.id:
-        rkp = await lazy.reply("`processing...`")
+@app.on_message(filters.command(["song", f"song@{BOT_USERNAME}"]))
+@PermissionCheck
+async def play(_, message: Message):
+    if message.chat.type == "private":
+        pass
     else:
-        rkp = await lazy.edit("`processing...`")
-    url = v_url.pattern_match.group(1)
-    if not url:
-        return await rkp.edit("`Error \nusage song <song name>`")
-    search = SearchVideos(url, offset=1, mode="json", max_results=1)
-    test = search.result()
-    p = json.loads(test)
-    q = p.get("search_result")
+        if message.sender_chat:
+            return await message.reply_text(
+                "You're an __Anonymous Admin__ in this Chat Group!\nRevert back to User Account From Admin Rights."
+            )
     try:
-        url = q[0]["link"]
+        await message.delete()
     except:
-        return await rkp.edit("`failed to find`")
-    type = "audio"
-    await rkp.edit("`Preparing to download...`")
-    if type == "audio":
-        opts = {
-            "format": "bestaudio",
-            "addmetadata": True,
-            "key": "FFmpegMetadata",
-            "writethumbnail": True,
-            "prefer_ffmpeg": True,
-            "geo_bypass": True,
-            "nocheckcertificate": True,
-            "postprocessors": [
-                {
-                    "key": "FFmpegExtractAudio",
-                    "preferredcodec": "mp3",
-                    "preferredquality": "320",
-                }
-            ],
-            "outtmpl": "%(id)s.mp3",
-            "quiet": True,
-            "logtostderr": False,
-        }
-        video = False
-        song = True
-    try:
-        await rkp.edit("`Fetching data, please wait..`")
-        with YoutubeDL(opts) as rip:
-            rip_data = rip.extract_info(url)
-    except DownloadError as DE:
-        await rkp.edit(f"`{str(DE)}`")
-        return
-    except ContentTooShortError:
-        await rkp.edit("`The download content was too short.`")
-        return
-    except GeoRestrictedError:
-        await rkp.edit(
-            "`Video is not available from your geographic location due to geographic restrictions imposed by a website.`"
+        pass
+    url = get_url(message)
+    if url:
+        mystic = await message.reply_text("🔄 Processing URL... Please Wait!")
+        query = message.text.split(None, 1)[1]
+        (
+            title,
+            duration_min,
+            duration_sec,
+            thumb,
+            videoid,
+        ) = await loop.run_in_executor(None, get_yt_info_query, query)
+        if str(duration_min) == "None":
+            return await mystic.edit("Sorry! Its a Live Video")
+        await mystic.delete()
+        buttons = song_download_markup(videoid, message.from_user.id)
+        return await message.reply_photo(
+            photo=thumb,
+            caption=f"📎Title: **{title}\n\n⏳Duration:** {duration_min} Mins\n\n__[Get Additional Information About Video](https://t.me/{BOT_USERNAME}?start=info_{videoid})__",
+            reply_markup=InlineKeyboardMarkup(buttons),
         )
-        return
-    except MaxDownloadsReached:
-        await rkp.edit("`Max-downloads limit has been reached.`")
-        return
-    except PostProcessingError:
-        await rkp.edit("`There was an error during post processing.`")
-        return
-    except UnavailableVideoError:
-        await rkp.edit("`Media is not available in the requested format.`")
-        return
-    except XAttrMetadataError as XAME:
-        await rkp.edit(f"`{XAME.code}: {XAME.msg}\n{XAME.reason}`")
-        return
-    except ExtractorError:
-        await rkp.edit("`There was an error during info extraction.`")
-        return
-    except Exception as e:
-        await rkp.edit(f"{str(type(e)): {str(e)}}")
-        return
-    c_time = time.time()
-    if song:
-        await rkp.edit(
-            f"`Preparing to upload song:`\
-        \n**{rip_data['title']}**\
-        \nby *{rip_data['uploader']}*"
-        )
-        await v_url.client.send_file(
-            v_url.chat_id,
-            f"{rip_data['id']}.mp3",
-            supports_streaming=True,
-            attributes=[
-                DocumentAttributeAudio(
-                    duration=int(rip_data["duration"]),
-                    title=str(rip_data["title"]),
-                    performer=str(rip_data["uploader"]),
-                )
-            ],
-            progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                progress(d, t, v_url, c_time, "Uploading..", f"{rip_data['title']}.mp3")
-            ),
-        )
-        os.remove(f"{rip_data['id']}.mp3")
-    elif video:
-        await rkp.edit(
-            f"`Preparing to upload song :`\
-        \n**{rip_data['title']}**\
-        \nby *{rip_data['uploader']}*"
-        )
-        await v_url.client.send_file(
-            v_url.chat_id,
-            f"{rip_data['id']}.mp4",
-            supports_streaming=True,
-            caption=url,
-            progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                progress(d, t, v_url, c_time, "Uploading..", f"{rip_data['title']}.mp4")
-            ),
-        )
-        os.remove(f"{rip_data['id']}.mp4")
-
-
-@register(pattern="^/video (.*)")
-async def download_video(v_url):
-    lazy = v_url
-    sender = await lazy.get_sender()
-    me = await lazy.client.get_me()
-    if not sender.id == me.id:
-        rkp = await lazy.reply("`processing...`")
     else:
-        rkp = await lazy.edit("`processing...`")
-    url = v_url.pattern_match.group(1)
-    if not url:
-        return await rkp.edit("`Error \nusage song <song name>`")
-    search = SearchVideos(url, offset=1, mode="json", max_results=1)
-    test = search.result()
-    p = json.loads(test)
-    q = p.get("search_result")
-    try:
-        url = q[0]["link"]
-    except:
-        return await rkp.edit("`failed to find`")
-    type = "audio"
-    await rkp.edit("`Preparing to download...`")
-    if type == "audio":
-        opts = {
-            "format": "best",
-            "addmetadata": True,
-            "key": "FFmpegMetadata",
-            "prefer_ffmpeg": True,
-            "geo_bypass": True,
-            "nocheckcertificate": True,
-            "postprocessors": [
-                {"key": "FFmpegVideoConvertor", "preferedformat": "mp4"}
-            ],
-            "outtmpl": "%(id)s.mp4",
-            "logtostderr": False,
-            "quiet": True,
-        }
-        song = False
-        video = True
-    try:
-        await rkp.edit("`Fetching data, please wait..`")
-        with YoutubeDL(opts) as rip:
-            rip_data = rip.extract_info(url)
-    except DownloadError as DE:
-        await rkp.edit(f"`{str(DE)}`")
-        return
-    except ContentTooShortError:
-        await rkp.edit("`The download content was too short.`")
-        return
-    except GeoRestrictedError:
-        await rkp.edit(
-            "`Video is not available from your geographic location due to geographic restrictions imposed by a website.`"
+        if len(message.command) < 2:
+            await message.reply_text(
+                "**Usage:**\n\n/song [Youtube Url or Music Name]\n\nDownloads the Particular Query."
+            )
+            return
+        mystic = await message.reply_text("🔍 Searching Your Query...")
+        query = message.text.split(None, 1)[1]
+        (
+            title,
+            duration_min,
+            duration_sec,
+            thumb,
+            videoid,
+        ) = await loop.run_in_executor(None, get_yt_info_query, query)
+        if str(duration_min) == "None":
+            return await mystic.edit("Sorry! Its a Live Video")
+        await mystic.delete()
+        buttons = song_markup(
+            videoid, duration_min, message.from_user.id, query, 0
         )
-        return
-    except MaxDownloadsReached:
-        await rkp.edit("`Max-downloads limit has been reached.`")
-        return
-    except PostProcessingError:
-        await rkp.edit("`There was an error during post processing.`")
-        return
-    except UnavailableVideoError:
-        await rkp.edit("`Media is not available in the requested format.`")
-        return
-    except XAttrMetadataError as XAME:
-        await rkp.edit(f"`{XAME.code}: {XAME.msg}\n{XAME.reason}`")
-        return
-    except ExtractorError:
-        await rkp.edit("`There was an error during info extraction.`")
-        return
-    except Exception as e:
-        await rkp.edit(f"{str(type(e)): {str(e)}}")
-        return
-    c_time = time.time()
-    if song:
-        await rkp.edit(
-            f"`Preparing to upload song `\
-        \n**{rip_data['title']}**\
-        \nby *{rip_data['uploader']}*"
+        return await message.reply_photo(
+            photo=thumb,
+            caption=f"📎Title: **{title}\n\n⏳Duration:** {duration_min} Mins\n\n__[Get Additional Information About Video](https://t.me/{BOT_USERNAME}?start=info_{videoid})__",
+            reply_markup=InlineKeyboardMarkup(buttons),
         )
-        await v_url.client.send_file(
-            v_url.chat_id,
-            f"{rip_data['id']}.mp3",
-            supports_streaming=True,
-            attributes=[
-                DocumentAttributeAudio(
-                    duration=int(rip_data["duration"]),
-                    title=str(rip_data["title"]),
-                    performer=str(rip_data["uploader"]),
-                )
-            ],
-            progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                progress(d, t, v_url, c_time, "Uploading..", f"{rip_data['title']}.mp3")
-            ),
-        )
-        os.remove(f"{rip_data['id']}.mp3")
-        await v_url.delete()
-    elif video:
-        await rkp.edit(
-            f"`Preparing to upload video song :`\
-        \n**{rip_data['title']}**\
-        \nby *{rip_data['uploader']}*"
-        )
-        await v_url.client.send_file(
-            v_url.chat_id,
-            f"{rip_data['id']}.mp4",
-            supports_streaming=True,
-            caption=rip_data["title"],
-            progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                progress(d, t, v_url, c_time, "Uploading..", f"{rip_data['title']}.mp4")
-            ),
-        )
-        os.remove(f"{rip_data['id']}.mp4")
-        await rkp.delete()
 
 
-__help__ = """
- ➩ /song <songname artist(optional)>: uploads the song in it's best quality available
- ➩ /video <songname artist(optional)>: uploads the video song in it's best quality available
-"""
+@app.on_callback_query(filters.regex("qwertyuiopasdfghjkl"))
+async def qwertyuiopasdfghjkl(_, CallbackQuery):
+    print("234")
+    await CallbackQuery.answer()
+    callback_data = CallbackQuery.data.strip()
+    callback_request = callback_data.split(None, 1)[1]
+    userid = CallbackQuery.from_user.id
+    videoid, user_id = callback_request.split("|")
+    buttons = song_download_markup(videoid, user_id)
+    await CallbackQuery.edit_message_reply_markup(
+        reply_markup=InlineKeyboardMarkup(buttons)
+    )
 
-__mod_name__ = "Songs"
+
+@app.on_callback_query(filters.regex(pattern=r"song_right"))
+async def song_right(_, CallbackQuery):
+    callback_data = CallbackQuery.data.strip()
+    callback_request = callback_data.split(None, 1)[1]
+    what, type, query, user_id = callback_request.split("|")
+    if CallbackQuery.from_user.id != int(user_id):
+        return await CallbackQuery.answer(
+            "Search Your Own Music. You're not allowed to use this button.",
+            show_alert=True,
+        )
+    what = str(what)
+    type = int(type)
+    if what == "F":
+        if type == 9:
+            query_type = 0
+        else:
+            query_type = int(type + 1)
+        await CallbackQuery.answer("Getting Next Result", show_alert=True)
+        (
+            title,
+            duration_min,
+            duration_sec,
+            thumb,
+            videoid,
+        ) = await loop.run_in_executor(
+            None, get_yt_info_query_slider, query, query_type
+        )
+        buttons = song_markup(
+            videoid, duration_min, user_id, query, query_type
+        )
+        med = InputMediaPhoto(
+            media=thumb,
+            caption=f"📎Title: **{title}\n\n⏳Duration:** {duration_min} Mins\n\n__[Get Additional Information About Video](https://t.me/{BOT_USERNAME}?start=info_{videoid})__",
+        )
+        return await CallbackQuery.edit_message_media(
+            media=med, reply_markup=InlineKeyboardMarkup(buttons)
+        )
+    if what == "B":
+        if type == 0:
+            query_type = 9
+        else:
+            query_type = int(type - 1)
+        await CallbackQuery.answer("Getting Previous Result", show_alert=True)
+        (
+            title,
+            duration_min,
+            duration_sec,
+            thumb,
+            videoid,
+        ) = await loop.run_in_executor(
+            None, get_yt_info_query_slider, query, query_type
+        )
+        buttons = song_markup(
+            videoid, duration_min, user_id, query, query_type
+        )
+        med = InputMediaPhoto(
+            media=thumb,
+            caption=f"📎Title: **{title}\n\n⏳Duration:** {duration_min} Mins\n\n__[Get Additional Information About Video](https://t.me/{BOT_USERNAME}?start=info_{videoid})__",
+        )
+        return await CallbackQuery.edit_message_media(
+            media=med, reply_markup=InlineKeyboardMarkup(buttons)
+        )
