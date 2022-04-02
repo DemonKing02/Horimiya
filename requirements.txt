@@ -46,4 +46,3 @@ TgCrypto
 google_trans_new
 yt_dlp
 tswift
-ptbcontrib.postgres_persistence
