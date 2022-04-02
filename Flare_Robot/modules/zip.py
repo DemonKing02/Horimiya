@@ -9,8 +9,8 @@ from telethon import types
 from telethon.tl import functions
 from telethon.tl.types import DocumentAttributeVideo
 
-from Hottie_Robot import TEMP_DOWNLOAD_DIRECTORY, telethn
-from Hottie_Robot.events import register
+from Flare_Robot import TEMP_DOWNLOAD_DIRECTORY, telethn
+from Flare_Robot.events import register
 
 
 async def is_register_admin(chat, user):
