@@ -12,10 +12,10 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, Filters
 from telegram.utils.helpers import escape_markdown
 
-import Hottie_Robot.modules.sql.rules_sql as sql
-from Hottie_Robot import dispatcher
-from Hottie_Robot.modules.helper_funcs.chat_status import user_admin
-from Hottie_Robot.modules.helper_funcs.string_handling import markdown_parser
+import Flare_Robot.modules.sql.rules_sql as sql
+from Flare_Robot import dispatcher
+from Flare_Robot.modules.helper_funcs.chat_status import user_admin
+from Flare_Robot.modules.helper_funcs.string_handling import markdown_parser
 
 
 def get_rules(update: Update, context: CallbackContext):
