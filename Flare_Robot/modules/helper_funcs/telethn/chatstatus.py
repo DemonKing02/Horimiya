@@ -1,6 +1,6 @@
 from telethon.tl.types import ChannelParticipantsAdmins
 
-from Hottie_Robot import DRAGONS
+from Flare_Robot import DRAGONS
 from Hottie_Robot.modules.helper_funcs.telethn import IMMUNE_USERS, telethn
 
 
