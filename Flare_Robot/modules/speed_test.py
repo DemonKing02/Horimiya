@@ -2,9 +2,9 @@ import speedtest
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram.ext import CallbackContext, CallbackQueryHandler
 
-from Hottie_Robot import DEV_USERS, dispatcher
-from Hottie_Robot.modules.disable import DisableAbleCommandHandler
-from Hottie_Robot.modules.helper_funcs.chat_status import dev_plus
+from Flare_Robot import DEV_USERS, dispatcher
+from Flare_Robot.modules.disable import DisableAbleCommandHandler
+from Flare_Robot.modules.helper_funcs.chat_status import dev_plus
 
 
 def convert(speed):
