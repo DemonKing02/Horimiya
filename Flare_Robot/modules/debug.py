@@ -5,8 +5,8 @@ from telegram import Update
 from telegram.ext import CallbackContext, CommandHandler
 from telethon import events
 
-from Hottie_Robot import dispatcher, telethn
-from Hottie_Robot.modules.helper_funcs.chat_status import dev_plus
+from Flare_Robot import dispatcher, telethn
+from Flare_Robot.modules.helper_funcs.chat_status import dev_plus
 
 DEBUG_MODE = False
 
