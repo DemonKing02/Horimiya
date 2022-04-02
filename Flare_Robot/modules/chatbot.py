@@ -160,7 +160,7 @@ Reports bugs at @{SUPPORT_CHAT}
 *Powered by CoffeeHouse* (https://coffeehouse.intellivoid.net/) from @Intellivoid
 """
 
-ADD_CHAT_HANDLER = CommandHandler("addchat", add_chat)
+ADD_CHAT_HANDLER = CommandHandler("addchat", "chatbot", add_chat)
 REMOVE_CHAT_HANDLER = CommandHandler("rmchat", remove_chat)
 CHATBOT_HANDLER = MessageHandler(
     Filters.text
