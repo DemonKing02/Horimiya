@@ -79,12 +79,14 @@ def get_readable_time(seconds: int) -> str:
 
 PM_START_TEXT = """
 ────「 {} 」────
-*Heyaa! {},*
-*I am an Anime themed advance group management bot with a lots of Kawaii Features.
+*Heyaa! {}*
+*I am a group management bot with a lots of Kawaii advance Features.
+
 ❃⋆✦⋆──────────────⋆✦⋆❃
 ➷ *Uptime:* {}
 ➷ `{}` *users are Kawaii
 ❃⋆✦⋆──────────────⋆✦⋆❃
+
 ➹ Try The Help Buttons Below To Know My Abilities[.](https://telegra.ph/file/87fc99fdb207271b9439a.jpg) ××
 """
 
