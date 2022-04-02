@@ -11,7 +11,7 @@ import aiohttp
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
-from Hottie_Robot import pbot
+from Flare_Robot import pbot
 
 session = aiohttp.ClientSession()
 progress_callback_data = {}
