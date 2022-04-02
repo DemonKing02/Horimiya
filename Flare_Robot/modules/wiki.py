@@ -11,7 +11,7 @@ def wiki(update: Update, context: CallbackContext):
     msg = update.effective_message.reply_to_message or update.effective_message
     res = ""
     if msg == update.effective_message:
-        search = msg.text.split(" ", maxsplit=1)[1]
+        search = msg.text.split("", maxsplit=1)[1]
     else:
         search = msg.text
     try:
