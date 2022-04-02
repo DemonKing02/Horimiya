@@ -3,9 +3,9 @@ import random
 from telegram import Update
 from telegram.ext import CallbackContext
 
-import Hottie_Robot.modules.game_strings as game_strings
-from Hottie_Robot import dispatcher
-from Hottie_Robot.modules.disable import DisableAbleCommandHandler
+import Flare_Robot.modules.game_strings as game_strings
+from Flare_Robot import dispatcher
+from Flare_Robot.modules.disable import DisableAbleCommandHandler
 
 
 def truth(update: Update, context: CallbackContext):
