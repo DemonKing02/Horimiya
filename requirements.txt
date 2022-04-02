@@ -47,3 +47,4 @@ google_trans_new
 yt_dlp
 tswift
 hachoir
+youtube_dl
