@@ -5,9 +5,9 @@ import telegram
 from telegram import Update
 from telegram.ext import CallbackContext, Filters
 
-from Hottie_Robot import LOGGER, dispatcher
-from Hottie_Robot.modules.disable import DisableAbleMessageHandler
-from Hottie_Robot.modules.helper_funcs.regex_helper import infinite_loop_check
+from Flare_Robot import LOGGER, dispatcher
+from Flare_Robot.modules.disable import DisableAbleMessageHandler
+from Flare_Robot.modules.helper_funcs.regex_helper import infinite_loop_check
 
 DELIMITERS = ("/", ":", "|", "_")
 
