@@ -8,8 +8,8 @@ from telegram.error import BadRequest, TelegramError, Unauthorized
 from telegram.ext import CallbackContext, CommandHandler, Filters, MessageHandler
 from telegram.utils.helpers import mention_html
 
-import Hottie_Robot.modules.sql.global_bans_sql as sql
-from Hottie_Robot import (
+import  Flare_Robot.modules.sql.global_bans_sql as sql
+from Flare_Robot import (
     DEMONS,
     DEV_USERS,
     DRAGONS,
@@ -23,17 +23,17 @@ from Hottie_Robot import (
     dispatcher,
     sw,
 )
-from Hottie_Robot.modules.helper_funcs.chat_status import (
+from Flare_Robot.modules.helper_funcs.chat_status import (
     is_user_admin,
     support_plus,
     user_admin,
 )
-from Hottie_Robot.modules.helper_funcs.extraction import (
+from Flare_Robot.modules.helper_funcs.extraction import (
     extract_user,
     extract_user_and_text,
 )
-from Hottie_Robot.modules.helper_funcs.misc import send_to_list
-from Hottie_Robot.modules.sql.users_sql import get_user_com_chats
+from Flare_Robot.modules.helper_funcs.misc import send_to_list
+from Flare_Robot.modules.sql.users_sql import get_user_com_chats
 
 GBAN_ENFORCE_GROUP = 6
 
