@@ -16,8 +16,8 @@ from youtube_dl.utils import (
     XAttrMetadataError,
 )
 
-from Hottie_Robot.events import register
-from Hottie_Robot.utils import progress
+from Flare_Robot.events import register
+from Flare_Robot.utils import progress
 
 try:
 
