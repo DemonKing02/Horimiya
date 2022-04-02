@@ -4,9 +4,9 @@ from telegram import Update
 from telegram.ext import CallbackContext
 from tswift import Song
 
-from Hottie_Robot import dispatcher
-from Hottie_Robot.modules.disable import DisableAbleCommandHandler
-from Hottie_Robot.modules.helper_funcs.alternate import typing_action
+from Flare_Robot import dispatcher
+from Flare_Robot.modules.disable import DisableAbleCommandHandler
+from Flare_Robot.modules.helper_funcs.alternate import typing_action
 
 
 @typing_action
