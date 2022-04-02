@@ -1,156 +1,139 @@
+import os
+import wget
+import time
+import yt_dlp
 import asyncio
-from os import path
+import aiohttp
+import requests
 
 from pyrogram import filters
-from pyrogram.types import (InlineKeyboardMarkup, InputMediaPhoto, Message,
-                            Voice)
+from pyrogram.types import Message
+from Flare_Robot import pbot, BOT_USERNAME
+from Flare_Robot.utils.pluginhelp import get_text, progress
 from youtube_search import YoutubeSearch
-
-from Music import (BOT_USERNAME, DURATION_LIMIT, DURATION_LIMIT_MIN,
-                   MUSIC_BOT_NAME, app, db_mem)
-from Music.Decorators.permission import PermissionCheck
-from Music.Inline import song_download_markup, song_markup
-from Music.Utilities.url import get_url
-from Music.Utilities.youtube import get_yt_info_query, get_yt_info_query_slider
-
-loop = asyncio.get_event_loop()
+from youtubesearchpython import SearchVideos
 
 
-@app.on_message(filters.command(["song", f"song@{BOT_USERNAME}"]))
-@PermissionCheck
-async def play(_, message: Message):
-    if message.chat.type == "private":
-        pass
-    else:
-        if message.sender_chat:
-            return await message.reply_text(
-                "You're an __Anonymous Admin__ in this Chat Group!\nRevert back to User Account From Admin Rights."
-            )
-    try:
-        await message.delete()
-    except:
-        pass
-    url = get_url(message)
-    if url:
-        mystic = await message.reply_text("🔄 Processing URL... Please Wait!")
-        query = message.text.split(None, 1)[1]
-        (
-            title,
-            duration_min,
-            duration_sec,
-            thumb,
-            videoid,
-        ) = await loop.run_in_executor(None, get_yt_info_query, query)
-        if str(duration_min) == "None":
-            return await mystic.edit("Sorry! Its a Live Video")
-        await mystic.delete()
-        buttons = song_download_markup(videoid, message.from_user.id)
-        return await message.reply_photo(
-            photo=thumb,
-            caption=f"📎Title: **{title}\n\n⏳Duration:** {duration_min} Mins\n\n__[Get Additional Information About Video](https://t.me/{BOT_USERNAME}?start=info_{videoid})__",
-            reply_markup=InlineKeyboardMarkup(buttons),
-        )
-    else:
-        if len(message.command) < 2:
-            await message.reply_text(
-                "**Usage:**\n\n/song [Youtube Url or Music Name]\n\nDownloads the Particular Query."
-            )
-            return
-        mystic = await message.reply_text("🔍 Searching Your Query...")
-        query = message.text.split(None, 1)[1]
-        (
-            title,
-            duration_min,
-            duration_sec,
-            thumb,
-            videoid,
-        ) = await loop.run_in_executor(None, get_yt_info_query, query)
-        if str(duration_min) == "None":
-            return await mystic.edit("Sorry! Its a Live Video")
-        await mystic.delete()
-        buttons = song_markup(
-            videoid, duration_min, message.from_user.id, query, 0
-        )
-        return await message.reply_photo(
-            photo=thumb,
-            caption=f"📎Title: **{title}\n\n⏳Duration:** {duration_min} Mins\n\n__[Get Additional Information About Video](https://t.me/{BOT_USERNAME}?start=info_{videoid})__",
-            reply_markup=InlineKeyboardMarkup(buttons),
-        )
 
+def time_to_seconds(time):
+    stringt = str(time)
+    return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(':'))))
 
-@app.on_callback_query(filters.regex("qwertyuiopasdfghjkl"))
-async def qwertyuiopasdfghjkl(_, CallbackQuery):
-    print("234")
-    await CallbackQuery.answer()
-    callback_data = CallbackQuery.data.strip()
-    callback_request = callback_data.split(None, 1)[1]
-    userid = CallbackQuery.from_user.id
-    videoid, user_id = callback_request.split("|")
-    buttons = song_download_markup(videoid, user_id)
-    await CallbackQuery.edit_message_reply_markup(
-        reply_markup=InlineKeyboardMarkup(buttons)
+@pbot.on_message(filters.command(["vsong", "video"]))
+async def ytmusic(client, message: Message):
+    urlissed = get_text(message)
+    pablo = await client.send_message(
+        message.chat.id, f"Name ➛ {urlissed} 🔎 Finding the song..."
     )
+    if not urlissed:
+        await pablo.edit("Invalid Command Syntax")
+        return
+    search = SearchVideos(f"{urlissed}", offset=1, mode="dict", max_results=1)
+    mi = search.result()
+    mio = mi["search_result"]
+    mo = mio[0]["link"]
+    thum = mio[0]["title"]
+    fridayz = mio[0]["id"]
+    thums = mio[0]["channel"]
+    kekme = f"https://img.youtube.com/vi/{fridayz}/hqdefault.jpg"
+    await asyncio.sleep(0.6)
+    url = mo
+    sedlyf = wget.download(kekme)
+    opts = {
+
+        "format": "best",
+        "addmetadata": True,
+        "key": "FFmpegMetadata",
+        "prefer_ffmpeg": True,
+        "geo_bypass": True,
+        "nocheckcertificate": True,
+        "postprocessors": [{"key": "FFmpegVideoConvertor", "preferedformat": "mp4"}],
+        "outtmpl": "%(id)s.mp4",
+        "logtostderr": False,
+        "quiet": True,
+    }
+    try:
+        with yt_dlp.YoutubeDL(opts) as ytdl:
+            ytdl_data = ytdl.extract_info(url, download=True)
+    except Exception as e:
+        await event.edit(event, f"**Failed To Download** \n**Error :** `{str(e)}`")
+        return
+    c_time = time.time()
+    file_stark = f"{ytdl_data['id']}.mp4"
+    capy = f"**Video Name ➠** `{thum}` \n**Requested For :** `{urlissed}` \n**Channel :** `{thums}`\n\nBy @{BOT_USERNAME}"
+    await client.send_video(
+        message.chat.id,
+        video=open(file_stark, "rb"),
+        duration=int(ytdl_data["duration"]),
+        file_name=str(ytdl_data["title"]),
+        thumb=sedlyf,
+        caption=capy,
+        supports_streaming=True,
+        progress=progress,
+        progress_args=(
+            pablo,
+            c_time,
+            f"`Uploading {urlissed} Song From YouTube Music!`",
+            file_stark,
+        ),
+    )
+    await pablo.delete()
+    for files in (sedlyf, file_stark):
+        if files and os.path.exists(files):
+            os.remove(files)
 
 
-@app.on_callback_query(filters.regex(pattern=r"song_right"))
-async def song_right(_, CallbackQuery):
-    callback_data = CallbackQuery.data.strip()
-    callback_request = callback_data.split(None, 1)[1]
-    what, type, query, user_id = callback_request.split("|")
-    if CallbackQuery.from_user.id != int(user_id):
-        return await CallbackQuery.answer(
-            "Search Your Own Music. You're not allowed to use this button.",
-            show_alert=True,
+@pbot.on_message(filters.command(["song", f"song@{BOT_USERNAME}"]))
+def song(client, message):
+
+    user_id = message.from_user.id
+    user_name = message.from_user.first_name
+    rpk = "["+user_name+"](tg://user?id="+str(user_id)+")"
+
+    query = ''.join(' ' + str(i) for i in message.command[1:])
+    print(query)
+    m = message.reply('🔎 Finding the song...')
+    ydl_opts = {"format": "bestaudio[ext=m4a]"}
+    try:
+        results = YoutubeSearch(query, max_results=1).to_dict()
+        link = f"https://youtube.com{results[0]['url_suffix']}"
+        #print(results)
+        title = results[0]["title"][:40]       
+        thumbnail = results[0]["thumbnails"][0]
+        thumb_name = f'thumb{title}.jpg'
+        thumb = requests.get(thumbnail, allow_redirects=True)
+        open(thumb_name, 'wb').write(thumb.content)
+
+
+        duration = results[0]["duration"]
+        url_suffix = results[0]["url_suffix"]
+        views = results[0]["views"]
+
+    except Exception as e:
+        m.edit(
+            "✖️ Found Nothing. Sorry.\n\nTry another keywork or maybe spell it properly."
         )
-    what = str(what)
-    type = int(type)
-    if what == "F":
-        if type == 9:
-            query_type = 0
-        else:
-            query_type = int(type + 1)
-        await CallbackQuery.answer("Getting Next Result", show_alert=True)
-        (
-            title,
-            duration_min,
-            duration_sec,
-            thumb,
-            videoid,
-        ) = await loop.run_in_executor(
-            None, get_yt_info_query_slider, query, query_type
-        )
-        buttons = song_markup(
-            videoid, duration_min, user_id, query, query_type
-        )
-        med = InputMediaPhoto(
-            media=thumb,
-            caption=f"📎Title: **{title}\n\n⏳Duration:** {duration_min} Mins\n\n__[Get Additional Information About Video](https://t.me/{BOT_USERNAME}?start=info_{videoid})__",
-        )
-        return await CallbackQuery.edit_message_media(
-            media=med, reply_markup=InlineKeyboardMarkup(buttons)
-        )
-    if what == "B":
-        if type == 0:
-            query_type = 9
-        else:
-            query_type = int(type - 1)
-        await CallbackQuery.answer("Getting Previous Result", show_alert=True)
-        (
-            title,
-            duration_min,
-            duration_sec,
-            thumb,
-            videoid,
-        ) = await loop.run_in_executor(
-            None, get_yt_info_query_slider, query, query_type
-        )
-        buttons = song_markup(
-            videoid, duration_min, user_id, query, query_type
-        )
-        med = InputMediaPhoto(
-            media=thumb,
-            caption=f"📎Title: **{title}\n\n⏳Duration:** {duration_min} Mins\n\n__[Get Additional Information About Video](https://t.me/{BOT_USERNAME}?start=info_{videoid})__",
-        )
-        return await CallbackQuery.edit_message_media(
-            media=med, reply_markup=InlineKeyboardMarkup(buttons)
-        )
+        print(str(e))
+        return
+    m.edit("`Downloading Song... Please wait ⏱`")
+    try:
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            info_dict = ydl.extract_info(link, download=False)
+            audio_file = ydl.prepare_filename(info_dict)
+            ydl.process_info(info_dict)
+        rep = f'🎙 **Title**: [{title[:35]}]({link})\n🎬 **Source**: YouTube\n⏱️ **Duration**: `{duration}`\n👁‍🗨 **Views**: `{views}`\n📤 **By**: @{BOT_USERNAME}'
+        secmul, dur, dur_arr = 1, 0, duration.split(':')
+        for i in range(len(dur_arr)-1, -1, -1):
+            dur += (int(dur_arr[i]) * secmul)
+            secmul *= 60
+        message.reply_audio(audio_file, caption=rep, thumb=thumb_name, parse_mode='md', title=title, duration=dur)
+        m.delete()
+    except Exception as e:
+        m.edit('❌ Error')
+        print(e)
+
+    try:
+        os.remove(audio_file)
+        os.remove(thumb_name)
+    except Exception as e:
+        print(e)
