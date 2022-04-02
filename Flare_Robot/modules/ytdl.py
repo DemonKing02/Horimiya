@@ -14,7 +14,7 @@ from yt_dlp.utils import (
     XAttrMetadataError,
 )
 
-from Hottie_Robot.events import register
+from Flare_Robot.events import register
 
 
 @register(pattern="^/yt(audio|video) (.*)")
