@@ -42,5 +42,3 @@ odmantic
 cryptg==0.2.post4
 pymongo[srv]
 TgCrypto
-coffeehouse
-coffeehouse.api
