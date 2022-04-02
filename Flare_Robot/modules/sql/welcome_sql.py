@@ -4,8 +4,8 @@ from typing import Union
 
 from sqlalchemy import BigInteger, Boolean, Column, Integer, String, UnicodeText
 
-from Hottie_Robot.modules.helper_funcs.msg_types import Types
-from Hottie_Robot.modules.sql import BASE, SESSION
+from Flare_Robot.modules.helper_funcs.msg_types import Types
+from Flare_Robot.modules.sql import BASE, SESSION
 
 DEFAULT_WELCOME = "Hey {first}, how are you?"
 DEFAULT_GOODBYE = "Nice knowing ya!"
