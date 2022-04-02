@@ -1,7 +1,7 @@
 from telethon.tl.types import ChannelParticipantsAdmins
 
 from Flare_Robot import DRAGONS
-from Hottie_Robot.modules.helper_funcs.telethn import IMMUNE_USERS, telethn
+from Flare_Robot.modules.helper_funcs.telethn import IMMUNE_USERS, telethn
 
 
 async def user_is_ban_protected(user_id: int, message):
