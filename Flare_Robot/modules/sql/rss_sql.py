@@ -1,13 +1,13 @@
 import threading
 
-from sqlalchemy import Column, Integer, UnicodeText
+from sqlalchemy import Column, BigInteger, UnicodeText
 
-from Hottie_Robot.modules.sql import BASE, SESSION
+from Flare_Robot.modules.sql import BASE, SESSION
 
 
 class RSS(BASE):
     __tablename__ = "rss_feed"
-    id = Column(Integer, primary_key=True)
+    id = Column(BigInteger, primary_key=True)
     chat_id = Column(UnicodeText, nullable=False)
     feed_link = Column(UnicodeText)
     old_entry_link = Column(UnicodeText)
