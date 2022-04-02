@@ -14,23 +14,23 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import escape_markdown, mention_html
 
-from Hottie_Robot import DRAGONS, LOGGER, dispatcher
-from Hottie_Robot.modules.connection import connected
-from Hottie_Robot.modules.disable import DisableAbleCommandHandler
-from Hottie_Robot.modules.helper_funcs.alternate import send_message, typing_action
-from Hottie_Robot.modules.helper_funcs.chat_status import user_admin
-from Hottie_Robot.modules.helper_funcs.extraction import extract_text
-from Hottie_Robot.modules.helper_funcs.filters import CustomFilters
-from Hottie_Robot.modules.helper_funcs.handlers import MessageHandlerChecker
-from Hottie_Robot.modules.helper_funcs.misc import build_keyboard_parser
-from Hottie_Robot.modules.helper_funcs.msg_types import get_filter_type
-from Hottie_Robot.modules.helper_funcs.string_handling import (
+from Flare_Robot import DRAGONS, LOGGER, dispatcher
+from Flare_Robot.modules.connection import connected
+from Flare_Robot.modules.disable import DisableAbleCommandHandler
+from Flare_Robot.modules.helper_funcs.alternate import send_message, typing_action
+from Flare_Robot.modules.helper_funcs.chat_status import user_admin
+from Flare_Robot.modules.helper_funcs.extraction import extract_text
+from Flare_Robot.modules.helper_funcs.filters import CustomFilters
+from Flare_Robot.modules.helper_funcs.handlers import MessageHandlerChecker
+from Flare_Robot.modules.helper_funcs.misc import build_keyboard_parser
+from Flare_Robot.modules.helper_funcs.msg_types import get_filter_type
+from Flare_Robot.modules.helper_funcs.string_handling import (
     button_markdown_parser,
     escape_invalid_curly_brackets,
     markdown_to_html,
     split_quotes,
 )
-from Hottie_Robot.modules.sql import cust_filters_sql as sql
+from Flare_Robot.modules.sql import cust_filters_sql as sql
 
 HANDLER_GROUP = 10
 
