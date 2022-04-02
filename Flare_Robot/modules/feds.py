@@ -17,8 +17,8 @@ from telegram.error import BadRequest, TelegramError, Unauthorized
 from telegram.ext import CallbackContext, CallbackQueryHandler, CommandHandler
 from telegram.utils.helpers import mention_html, mention_markdown
 
-import Hottie_Robot.modules.sql.feds_sql as sql
-from Hottie_Robot import (
+import Flare_Robot.modules.sql.feds_sql as sql
+from Flare_Robot import (
     DRAGONS,
     EVENT_LOGS,
     LOGGER,
@@ -27,15 +27,15 @@ from Hottie_Robot import (
     WOLVES,
     dispatcher,
 )
-from Hottie_Robot.modules.disable import DisableAbleCommandHandler
-from Hottie_Robot.modules.helper_funcs.alternate import send_message
-from Hottie_Robot.modules.helper_funcs.chat_status import is_user_admin
-from Hottie_Robot.modules.helper_funcs.extraction import (
+from Flare_Robot.modules.disable import DisableAbleCommandHandler
+from Flare_Robot.modules.helper_funcs.alternate import send_message
+from Flare_Robot.modules.helper_funcs.chat_status import is_user_admin
+from Flare_Robot.modules.helper_funcs.extraction import (
     extract_unt_fedban,
     extract_user,
     extract_user_fban,
 )
-from Hottie_Robot.modules.helper_funcs.string_handling import markdown_parser
+from Flare_Robot.modules.helper_funcs.string_handling import markdown_parser
 
 # Hello bot owner, I spended for feds many hours of my life, Please don't remove this if you still respect MrYacha and peaktogoo and AyraHikari too
 # Federation by MrYacha 2018-2019
