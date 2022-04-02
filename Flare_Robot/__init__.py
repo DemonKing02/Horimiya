@@ -246,12 +246,7 @@ dispatcher = updater.dispatcher
 print("PYROGRAM CLIENT STARTING")
 session_name = TOKEN.split(":")[0]
 client = TelegramClient(MemorySession(), API_ID, API_HASH)
-pbot = Client("FlarePyro", 
-    session_name,
-    api_id=API_ID,
-    api_hash=API_HASH,
-    bot_token=TOKEN,
-)
+pbot = Client("FlarePyro", session_name, api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
 mongodb = MongoClient(MONGO_DB_URI, 27017)[MONGO_DB]
 motor = motor_asyncio.AsyncIOMotorClient(MONGO_DB_URI)
 db = motor[MONGO_DB]
