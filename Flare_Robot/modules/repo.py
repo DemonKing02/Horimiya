@@ -43,11 +43,11 @@ HOTTIE_PICS = (
 
 @aasf.on(events.NewMessage(incoming=True, pattern="/repo"))
 async def repo(e):
-    k = f"**Hoi** {e.sender.first_name} **Thx For Using Here is My Old Repo Current One Is Private 🔥**"
+    k = f"**Hoi** {e.sender.first_name} **Thx For Using Me Here is our Public repo🔥**"
     BUTTON = [
         [
-            Button.url("【►Repo◄】", "https://github.com/AASFCYBERKING/HottieRobot"),
-            Button.url("【►Owner◄】", "https://telegram.me/AASFCYBERKING"),
+            Button.url("【►Repo◄】", "https://github.com/Asta-vir/Flare-Robot"),
+            Button.url("【►Owner◄】", "https://telegram.me/Asta_Silva02"),
         ]
     ]
     await aasf.send_file(
