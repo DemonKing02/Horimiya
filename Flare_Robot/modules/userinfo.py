@@ -1,16 +1,23 @@
 import html
-import os
 import re
-import subprocess
-
+import os
 import requests
-from telegram import MAX_MESSAGE_LENGTH, ParseMode, Update
-from telegram.error import BadRequest
-from telegram.ext import CallbackContext, CommandHandler
-from telegram.utils.helpers import escape_markdown, mention_html
-from telethon import events
+import datetime
+import platform
+import time
+
+from psutil import cpu_percent, virtual_memory, disk_usage, boot_time
+from platform import python_version
 from telethon.tl.functions.channels import GetFullChannelRequest
 from telethon.tl.types import ChannelParticipantsAdmins
+from telethon import events
+
+from telegram import MAX_MESSAGE_LENGTH, ParseMode, Update, MessageEntity, __version__ as ptbver, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.ext import CallbackContext, CommandHandler
+from telegram.ext.dispatcher import run_async
+from telegram.error import BadRequest
+from telegram.utils.helpers import escape_markdown, mention_html
+    
 
 import Flare_Robot.modules.sql.userinfo_sql as sql
 from Flare_Robot import (
@@ -234,24 +241,24 @@ def info(update: Update, context: CallbackContext):
     else:
         return
 
-    rep = message.reply_text("<code>Appraising...</code>", parse_mode=ParseMode.HTML)
+    rep = message.reply_text("<code>Getting info...</code>", parse_mode=ParseMode.HTML)
 
     text = (
-        f"╒═══「<b> Appraisal results:</b> 」\n"
-        f"ID: <code>{user.id}</code>\n"
-        f"First Name: {html.escape(user.first_name)}"
+        f"╔═━「<b> Appraisal results:</b> 」\n"
+        f"✪ ID: <code>{user.id}</code>\n"
+        f"✪ First Name: {html.escape(user.first_name)}"
     )
 
     if user.last_name:
-        text += f"\nLast Name: {html.escape(user.last_name)}"
+        text += f"\n✪ Last Name: {html.escape(user.last_name)}"
 
     if user.username:
-        text += f"\nUsername: @{html.escape(user.username)}"
+        text += f"\n✪ Username: @{html.escape(user.username)}"
 
-    text += f"\nPermalink: {mention_html(user.id, 'link')}"
+    text += f"\n✪ Userlink: {mention_html(user.id, 'link')}"
 
     if chat.type != "private" and user_id != bot.id:
-        _stext = "\nPresence: <code>{}</code>"
+        _stext = "\n✪ Presence: <code>{}</code>"
 
         afk_st = is_afk(user.id)
         if afk_st:
@@ -275,40 +282,38 @@ def info(update: Update, context: CallbackContext):
             text += "\n\n<b>This person is Spamwatched!</b>"
             text += f"\nReason: <pre>{spamwtc.reason}</pre>"
             text += "\nAppeal at @SpamWatchSupport"
-        else:
-            pass
     except:
         pass  # don't crash if api is down somehow...
 
     disaster_level_present = False
 
     if user.id == OWNER_ID:
-        text += "\n\nThe Power level of this person is 'God'."
+        text += "\n\nThis person is my 'Keyaru sama'."
         disaster_level_present = True
     elif user.id in DEV_USERS:
-        text += "\n\nThe Power level of this person is 'S - Rank'."
+        text += "\n\nThis user is my 'Healing Hero'."
         disaster_level_present = True
     elif user.id in DRAGONS:
-        text += "\n\nThe Power level of this person is 'A - Rank'."
+        text += "\n\nThis person is my 'Knight'."
         disaster_level_present = True
     elif user.id in DEMONS:
-        text += "\n\nThe Power level of this person is 'B - Rank'."
+        text += "\n\nThis person is my 'Magic Hero'."
         disaster_level_present = True
     elif user.id in TIGERS:
-        text += "\n\nThe Power level of this person is 'C - Rank'."
+        text += "\n\nthis person is my 'Rifle Hero'."
         disaster_level_present = True
     elif user.id in WOLVES:
-        text += "\n\nThe Power level of this person is 'D - Rank'."
+        text += "\n\nThis person is my 'Demi Human'."
         disaster_level_present = True
-
-    if disaster_level_present:
-        text += ' [<a href="https://t.me/hiroiscool/3">?</a>]'.format(bot.username)
+    elif user.id == 1635151800:
+         text += "\n\nMy owner @Ryu_God. My Darling."
+         disaster_level_present = True
 
     try:
         user_member = chat.get_member(user.id)
         if user_member.status == "administrator":
             result = requests.post(
-                f"https://api.telegram.org/bot{TOKEN}/getChatMember?chat_id={chat.id}&user_id={user.id}"
+                f"https://api.telegram.org/bot{TOKEN}/getChatMember?chat_id={chat.id}&user_id={user.id}",
             )
             result = result.json()["result"]
             if "custom_title" in result.keys():
@@ -329,25 +334,46 @@ def info(update: Update, context: CallbackContext):
         try:
             profile = context.bot.get_user_profile_photos(user.id).photos[0][-1]
             _file = bot.get_file(profile["file_id"])
-            _file.download(f"{user.id}.png")
+            _file.download(f"{user.id}.jpg")
 
-            message.reply_document(
-                document=open(f"{user.id}.png", "rb"),
+            message.reply_photo(
+                photo=open(f"{user.id}.jpg", "rb"),
                 caption=(text),
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(
+                                "Health", url="https://t.me/Freia_Updates/9"),
+                            InlineKeyboardButton(
+                                "Disaster", url="https://t.me/Freia_Updates/5")
+                        ],
+                    ]
+                ),
                 parse_mode=ParseMode.HTML,
-                disable_web_page_preview=True,
             )
 
-            os.remove(f"{user.id}.png")
+            os.remove(f"{user.id}.jpg")
         # Incase user don't have profile pic, send normal text
         except IndexError:
             message.reply_text(
-                text, parse_mode=ParseMode.HTML, disable_web_page_preview=True
+                text, 
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(
+                                "Health", url="https://t.me/Freia_Updates/9"),
+                            InlineKeyboardButton(
+                                "Disaster", url="https://t.me/Freia_Updates/5")
+                        ],
+                    ]
+                ),
+                parse_mode=ParseMode.HTML,
+                disable_web_page_preview=True
             )
 
     else:
         message.reply_text(
-            text, parse_mode=ParseMode.HTML, disable_web_page_preview=True
+            text, parse_mode=ParseMode.HTML,
         )
 
     rep.delete()
