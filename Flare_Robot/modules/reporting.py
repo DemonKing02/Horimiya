@@ -11,10 +11,10 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import mention_html
 
-from Hottie_Robot import DRAGONS, LOGGER, TIGERS, WOLVES, dispatcher
-from Hottie_Robot.modules.helper_funcs.chat_status import user_admin, user_not_admin
-from Hottie_Robot.modules.log_channel import loggable
-from Hottie_Robot.modules.sql import reporting_sql as sql
+from Flare_Robot import DRAGONS, LOGGER, TIGERS, WOLVES, dispatcher
+from Flare_Robot.modules.helper_funcs.chat_status import user_admin, user_not_admin
+from Flare_Robot.modules.log_channel import loggable
+from Flare_Robot.modules.sql import reporting_sql as sql
 
 REPORT_GROUP = 12
 REPORT_IMMUNE_USERS = DRAGONS + TIGERS + WOLVES
