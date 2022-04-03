@@ -7,8 +7,6 @@ import httpx
 import aiohttp
 import telegram.ext as tg
 
-from dotenv import load_dotenv
-from os import getenv
 from pyrogram import Client, errors
 from pyrogram.errors.exceptions.bad_request_400 import PeerIdInvalid, ChannelInvalid
 from telethon import TelegramClient
@@ -25,8 +23,6 @@ from telegraph import Telegraph
 from telegram import Chat
 
 StartTime = time.time()
-
-load_dotenv()
 
 # enable logging
 logging.basicConfig(
@@ -304,39 +300,6 @@ WOLVES = list(WOLVES)
 DEMONS = list(DEMONS)
 TIGERS = list(TIGERS)
 
-
-
-if str(getenv("STRING_SESSION1")).strip() == "":
-    STRING1 = str(None)
-else:
-    STRING1 = str(getenv("STRING_SESSION1"))
-
-if str(getenv("STRING_SESSION2")).strip() == "":
-    STRING2 = str(None)
-else:
-    STRING2 = str(getenv("STRING_SESSION2"))
-
-if str(getenv("STRING_SESSION3")).strip() == "":
-    STRING3 = str(None)
-else:
-    STRING3 = str(getenv("STRING_SESSION3"))
-
-if str(getenv("STRING_SESSION4")).strip() == "":
-    STRING4 = str(None)
-else:
-    STRING4 = str(getenv("STRING_SESSION4"))
-
-if str(getenv("STRING_SESSION5")).strip() == "":
-    STRING5 = str(None)
-else:
-    STRING5 = str(getenv("STRING_SESSION5"))
-
-if str(getenv("LOG_SESSION")).strip() == "":
-    LOG_SESSION = str(None)
-else:
-    LOG_SESSION = str(getenv("LOG_SESSION"))
-
-
 # Load at end to ensure all prev variables have been set
 from Flare_Robot.modules.helper_funcs.handlers import (
     CustomCommandHandler,
@@ -348,5 +311,3 @@ from Flare_Robot.modules.helper_funcs.handlers import (
 tg.RegexHandler = CustomRegexHandler
 tg.CommandHandler = CustomCommandHandler
 tg.MessageHandler = CustomMessageHandler
-
-get_queue = {}
