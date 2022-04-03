@@ -1,5 +1,4 @@
 import os
-import cv2
 from PIL import Image
 from Flare_Robot.events import register
 from Flare_Robot import telethn as tbot
