@@ -15,7 +15,7 @@ from redis import StrictRedis
 from telethon import TelegramClient
 from telethon.sessions import StringSession
 
-from Hottie_Robot.utils.logger import log
+from Flare_Robot.utils.logger import log
 
 StartTime = time.time()
 
