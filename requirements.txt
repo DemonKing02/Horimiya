@@ -51,4 +51,3 @@ youtube_dl
 youtube_search
 youtube_search_python
 pykeyboard
-cv2
