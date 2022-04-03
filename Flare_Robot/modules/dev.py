@@ -49,11 +49,10 @@ def gitpull(update: Update, context: CallbackContext):
 @dev_plus
 def restart(update: Update, context: CallbackContext):
     update.effective_message.reply_text(
-        "Starting a new instance and shutting down this one"
+	"Exiting all Processes and starting a new Instance!"
     )
-
-    os.system("restart.bat")
-    os.execv("start.bat", sys.argv)
+    process = subprocess.run("pkill python3 && python3 -m Flare_Robot", shell=True, check=True)
+    process.communicate()
 
 
 LEAVE_HANDLER = CommandHandler("leave", leave, run_async=True)
