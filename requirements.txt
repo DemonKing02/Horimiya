@@ -50,3 +50,4 @@ hachoir
 youtube_dl
 youtube_search
 youtube_search_python
+https://github.com/python-telegram-bot/ptbcontrib.git
