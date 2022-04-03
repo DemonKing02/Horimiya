@@ -1,6 +1,7 @@
 from pyrogram import Client
 
-from Flare_Robot import (API_HASH, API_ID, BOT_TOKEN, LOG_SESSION, STRING1, STRING2,
+from Flare_Robot import (API_HASH, API_ID, BOT_TOKEN)
+from config import (LOG_SESSION, STRING1, STRING2,
                     STRING3, STRING4, STRING5)
 
 app = Client(
