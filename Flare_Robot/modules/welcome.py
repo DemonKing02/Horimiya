@@ -258,7 +258,7 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
                                 ),
                                 InlineKeyboardButton(
                                     text="📢 Updates",
-                                    url="https://t.me/Black_Knights_Union",
+                                    url="https://t.me/Freia_Updates",
                                 ),
                             ]
                         ],
