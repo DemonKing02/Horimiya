@@ -235,8 +235,7 @@ finally:
 
 
 telegraph = Telegraph()
-print("Telegraph Account Creating")
-telegraph.create_account(short_name='Flare')        
+telegraph.create_account(short_name='Freiaa')        
 print("TELETHON CLIENT STARTING")
 telethn = TelegramClient(MemorySession(), API_ID, API_HASH)
 updater = tg.Updater(
