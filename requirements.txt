@@ -1,5 +1,5 @@
 alphabet_detector==0.0.7
-bleach==4.1.0
+bleach==5.0.0
 bs4==0.0.1
 cachetools
 emoji==1.6.3
