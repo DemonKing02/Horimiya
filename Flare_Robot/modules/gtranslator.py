@@ -1,4 +1,4 @@
-os
+import os
 
 from gpytranslate import SyncTranslator
 from telegram import Update, ChatAction, InlineKeyboardButton, InlineKeyboardMarkup, ParseMode
