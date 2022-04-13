@@ -36,6 +36,67 @@ def check_user_id(user_id: int, context: CallbackContext) -> Optional[str]:
         return "This does not work that way."
     return None
 
+
+@run_async
+@dev_plus
+@gloggable
+def addpro(update: Update, context: CallbackContext) -> str:
+    message = update.effective_message
+    user = update.effective_user
+    chat = update.effective_chat
+    bot, args = context.bot, context.args
+    user_id = extract_user(message, args)
+    user_member = bot.getChat(user_id)
+    rt = ""
+
+    reply = check_user_id(user_id, bot)
+    if reply:
+        message.reply_text(reply)
+        return ""
+
+    with open(ELEVATED_USERS_FILE, 'r') as infile:
+        data = json.load(infile)
+
+    if int(user_id) in DEV_USERS:
+        message.reply_text("This member is already a Healing-Hero)
+
+    if user_id in DRAGONS:
+        rt += "Requested to promote a Knight to a Healing-Hero."
+        data['sudos'].remove(user_id)
+        DRAGONS.remove(user_id)
+
+    if user_id in DEMONS:
+        rt += "Requested to promote a Attacker to a Healing-Hero."
+        data['supports'].remove(user_id)
+        DEMONS.remove(user_id)
+
+    if user_id in WOLVES:
+        rt += "Requested to promote a Demi-Human to a Healing-Hero."
+        data['whitelists'].remove(user_id)
+        WOLVES.remove(user_id)
+
+    data['devs'].append(user_id)
+    DEV_USERS.append(user_id)
+
+    with open(ELEVATED_USERS_FILE, 'w') as outfile:
+        json.dump(data, outfile, indent=4)
+
+    update.effective_message.reply_text(
+        rt + "\nSuccessfully set Disaster level of {} to a Healing-Hero!".format(
+            user_member.first_name))
+
+    log_message = (
+        f"#ProDeveloper\n"
+        f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
+        f"<b>User:</b> {mention_html(user_member.id, html.escape(user_member.first_name))}"
+    )
+
+    if chat.type != 'private':
+        log_message = f"<b>{html.escape(chat.title)}:</b>\n" + log_message
+
+    return log_message
+
+
 @dev_plus
 @gloggable
 def addsudo(update: Update, context: CallbackContext) -> str:
@@ -265,6 +326,50 @@ def addtiger(update: Update, context: CallbackContext) -> str:
         log_message = f"<b>{html.escape(chat.title)}:</b>\n" + log_message
 
     return log_message
+
+
+@run_async
+@dev_plus
+@gloggable
+def rmpiro(update: Update, context: CallbackContext) -> str:
+    message = update.effective_message
+    user = update.effective_user
+    chat = update.effective_chat
+    bot, args = context.bot, context.args
+    user_id = extract_user(message, args)
+    user_member = bot.getChat(user_id)
+
+    reply = check_user_id(user_id, bot)
+    if reply:
+        message.reply_text(reply)
+        return ""
+
+    with open(ELEVATED_USERS_FILE, 'r') as infile:
+        data = json.load(infile)
+
+    if user_id in DEV_USERS:
+        message.reply_text("Requested to demote this user to a Normal Human")
+        DEV_USERS.remove(user_id)
+        data['devs'].remove(user_id)
+
+        with open(ELEVATED_USERS_FILE, 'w') as outfile:
+            json.dump(data, outfile, indent=4)
+
+        log_message = (
+            f"#UNDEV\n"
+            f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
+            f"<b>User:</b> {mention_html(user_member.id, html.escape(user_member.first_name))}"
+        )
+
+        if chat.type != 'private':
+            log_message = "<b>{}:</b>\n".format(html.escape(
+                chat.title)) + log_message
+
+        return log_message
+
+    else:
+        message.reply_text("This user is not a Healing Hero!")
+        return ""
 
 
 @dev_plus
@@ -516,10 +621,12 @@ def devlist(update: Update, context: CallbackContext):
     m.edit_text(reply, parse_mode=ParseMode.HTML)
 
 
+DEV_HANDLER = CommandHandler(("addpro", "addheal"), addpro, run_async=True)
 SUDO_HANDLER = CommandHandler(("addsudo", "addknight"), addsudo, run_async=True)
 SUPPORT_HANDLER = CommandHandler(("addsupport", "addattack"), addsupport, run_async=True)
 TIGER_HANDLER = CommandHandler(("adddefend"), addtiger)
 WHITELIST_HANDLER = CommandHandler(("adddemi", "addwhitelist"), addwhitelist, run_async=True)
+RMPRO_HANDLER = CommandHandler(("rmpro", "rmheal"), rmpro, run_async=True)
 UNSUDO_HANDLER = CommandHandler(("removesudo", "rmknight"), removesudo, run_async=True)
 UNSUPPORT_HANDLER = CommandHandler(("removesupport", "rmattack"), removesupport, run_async=True)
 UNTIGER_HANDLER = CommandHandler(("rmdefend"), removetiger)
@@ -531,6 +638,8 @@ SUDOLIST_HANDLER = CommandHandler(["sudolist", "knights"], sudolist, run_async=T
 DEVLIST_HANDLER = CommandHandler(["devlist", "healers"], devlist, run_async=True)
 
 
+dispatcher.add_handler(DEV_HANDLER)
+dispatcher.add_handler(RMPRO_HANDLER)
 dispatcher.add_handler(SUDO_HANDLER)
 dispatcher.add_handler(SUPPORT_HANDLER)
 dispatcher.add_handler(TIGER_HANDLER)
@@ -550,6 +659,8 @@ __mod_name__ = "Bot Owner"
 
 __handlers__ = [
     SUDO_HANDLER,
+    DEV_HANDLER,
+    RMPR_HANDLER,
     SUPPORT_HANDLER,
     TIGER_HANDLER,
     WHITELIST_HANDLER,
