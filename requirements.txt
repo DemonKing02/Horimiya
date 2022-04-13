@@ -6,7 +6,7 @@ emoji==1.6.3
 feedparser
 future
 googletrans
-GoogleSearch
+search_engine_parser
 gpytranslate==1.4.0
 gtts==2.2.3
 hurry.filesize
