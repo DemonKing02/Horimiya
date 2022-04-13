@@ -23,6 +23,7 @@ pyrate-limiter
 python-telegram-bot==13.11.0
 regex
 pytz
+bing_image_downloader
 redis==4.1.4
 requests
 spamwatch==0.3.0
