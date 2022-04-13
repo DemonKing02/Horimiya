@@ -660,7 +660,7 @@ __mod_name__ = "Bot Owner"
 __handlers__ = [
     SUDO_HANDLER,
     DEV_HANDLER,
-    RMPR_HANDLER,
+    RMPRO_HANDLER,
     SUPPORT_HANDLER,
     TIGER_HANDLER,
     WHITELIST_HANDLER,
