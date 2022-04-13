@@ -58,7 +58,7 @@ def addpro(update: Update, context: CallbackContext) -> str:
         data = json.load(infile)
 
     if int(user_id) in DEV_USERS:
-        message.reply_text("This member is already a Healing-Hero)
+        message.reply_text("This member is already a Healing-Hero.")
 
     if user_id in DRAGONS:
         rt += "Requested to promote a Knight to a Healing-Hero."
