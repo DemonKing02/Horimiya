@@ -10,6 +10,7 @@ search_engine_parser
 gpytranslate==1.4.0
 gtts==2.2.3
 hurry.filesize
+neko
 html2text
 jikanpy==4.3.2
 lxml==4.7.1
