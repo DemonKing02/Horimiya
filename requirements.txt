@@ -36,7 +36,6 @@ wget
 wikipedia==1.4.0
 httpx
 pyrogram
-nekos
 motor
 pymongo==3.12.1
 DateTime
