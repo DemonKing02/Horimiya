@@ -1,6 +1,6 @@
 import os
 import html
-import neko
+import nekos
 import requests
 import re
 
