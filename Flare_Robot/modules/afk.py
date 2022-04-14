@@ -15,8 +15,8 @@ from Flare_Robot.modules.redis.afk_redis import start_afk, end_afk, is_user_afk,
 from Flare_Robot import REDIS
 from Flare_Robot.modules.users import get_user_id
 
-from Cutiepii_Robot.modules.helper_funcs.alternate import send_message
-from Cutiepii_Robot.modules.helper_funcs.readable_time import get_readable_time
+from Flare_Robot.modules.helper_funcs.alternate import send_message
+from Flare_Robot.modules.helper_funcs.readable_time import get_readable_time
 
 AFK_GROUP = 7
 AFK_REPLY_GROUP = 8
