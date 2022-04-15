@@ -1,4 +1,6 @@
+import textwrap
 import os
+
 from PIL import Image, ImageFont, ImageDraw
 from Flare_Robot.events import register
 from Flare_Robot import LOGGER, TEMP_DOWNLOAD_DIRECTORY, telethn as bot
