@@ -5,6 +5,9 @@ from Flare_Robot.events import register
 from Flare_Robot import LOGGER, TEMP_DOWNLOAD_DIRECTORY, telethn as bot
 
 
+font_type = ImageFont.truetype('/assets/Nunito-Regular.ttf', 40)
+font_type2 = ImageFont.truetype('/assets/Nunito-Regular.ttf', 40*2)
+
 @register(pattern="^/mmf ?(.*)")
 async def handler(event):
     if event.fwd_from:
@@ -29,7 +32,6 @@ async def handler(event):
 
 # Taken from https://github.com/UsergeTeam/Userge-Plugins/blob/master/plugins/memify.py#L64
 # Maybe replyed to suit the needs of this module
-
 
 async def drawText(image_path, text):
     img = Image.open(image_path)
@@ -137,3 +139,5 @@ async def drawText(image_path, text):
     webp_file = os.path.join(image_name)
     img.save(webp_file, "webp")
     return webp_file
+
+ImageFont.load_default()
