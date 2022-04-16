@@ -56,3 +56,4 @@ youtube_search
 youtube_search_python
 pykeyboard
 humanize
+fontTools
