@@ -28,7 +28,6 @@ bing_image_downloader
 redis==4.1.4
 requests
 spamwatch==0.3.0
-speedtest-cli>=2.0.2
 SQLAlchemy==1.4.34
 telethon==1.24.0
 telegraph==2.1.0
@@ -48,10 +47,8 @@ cryptg==0.2.post4
 pymongo[srv]
 TgCrypto
 google_trans_new
-yt_dlp
 tswift
 hachoir
-youtube_dl
 youtube_search
 youtube_search_python
 pykeyboard
