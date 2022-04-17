@@ -28,7 +28,7 @@ bing_image_downloader
 redis==4.1.4
 requests
 spamwatch==0.3.0
-SQLAlchemy==1.4.34
+SQLAlchemy==1.4.35
 telethon==1.24.0
 telegraph==2.1.0
 ujson==5.1.0
