@@ -55,3 +55,4 @@ fontTools
 envparse
 yt_dlp
 youtube_search
+youtubesearchpython
