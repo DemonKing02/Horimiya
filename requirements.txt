@@ -53,3 +53,4 @@ pykeyboard
 humanize
 fontTools
 envparse
+geopy
