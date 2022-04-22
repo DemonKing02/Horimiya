@@ -94,14 +94,13 @@ PM_START_TEXT = """
 buttons = [
     [
         InlineKeyboardButton(
-            text=f"Add Cute kawaii To Your Group", url=f"t.me/Kawai_probot?startgroup=true"
+            text=f"Add Cute kawaii To Your Group",
+            url=f"t.me/Kawai_probot?startgroup=true",
         )
     ],
     [
         InlineKeyboardButton(text="[► Help ◄]", callback_data="help_back"),
-        InlineKeyboardButton(
-            text="🌎Chit Chat", url="https://t.me/Freia_Support"
-        ),
+        InlineKeyboardButton(text="🌎Chit Chat", url="https://t.me/Freia_Support"),
         InlineKeyboardButton(text="[► Inline ◄]", switch_inline_query_current_chat=""),
     ],
     [
@@ -674,7 +673,12 @@ def main():
 
     else:
         LOGGER.info("Flare_Robot is started alive Using long polling.")
-        updater.start_polling(timeout=15, read_latency=4, drop_pending_updates=True, allowed_updates=Update.ALL_TYPES)
+        updater.start_polling(
+            timeout=15,
+            read_latency=4,
+            drop_pending_updates=True,
+            allowed_updates=Update.ALL_TYPES,
+        )
 
     if len(argv) not in (1, 3, 4):
         telethn.disconnect()

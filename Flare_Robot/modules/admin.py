@@ -188,7 +188,6 @@ def fullpromote(update: Update, context: CallbackContext):
     )
 
 
-
 @connection_status
 @bot_admin
 @can_promote

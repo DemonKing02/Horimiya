@@ -8,7 +8,7 @@ from telegram.error import BadRequest, TelegramError, Unauthorized
 from telegram.ext import CallbackContext, CommandHandler, Filters, MessageHandler
 from telegram.utils.helpers import mention_html
 
-import  Flare_Robot.modules.sql.global_bans_sql as sql
+import Flare_Robot.modules.sql.global_bans_sql as sql
 from Flare_Robot import (
     DEMONS,
     DEV_USERS,

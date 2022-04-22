@@ -9,7 +9,13 @@ from telegram import (
     InlineKeyboardMarkup,
 )
 from telegram.error import BadRequest
-from telegram.ext import CallbackContext, Filters, CommandHandler, run_async, CallbackQueryHandler
+from telegram.ext import (
+    CallbackContext,
+    Filters,
+    CommandHandler,
+    run_async,
+    CallbackQueryHandler,
+)
 from telegram.utils.helpers import mention_html
 from typing import Optional, List
 from telegram import TelegramError
@@ -45,7 +51,6 @@ from Flare_Robot.modules.helper_funcs.string_handling import extract_time
 from Flare_Robot.modules.log_channel import gloggable, loggable
 
 
-
 @connection_status
 @bot_admin
 @can_restrict
@@ -77,7 +82,9 @@ def ban(update: Update, context: CallbackContext) -> str:
 
     if is_user_ban_protected(chat, user_id, member) and user not in DEV_USERS:
         if user_id == OWNER_ID:
-            message.reply_text("Trying to put me against my Oh So Sexy Master Keyaru-Sama huh?")
+            message.reply_text(
+                "Trying to put me against my Oh So Sexy Master Keyaru-Sama huh?"
+            )
         elif user_id in DEV_USERS:
             message.reply_text("I can't act against our Healers.")
         elif user_id in DRAGONS:
@@ -138,7 +145,9 @@ def ban(update: Update, context: CallbackContext) -> str:
                         InlineKeyboardButton(
                             text="✔️Unban", callback_data=f"unbanb_unban={user_id}"
                         ),
-                        InlineKeyboardButton(text="✖️Delete", callback_data="unbanb_del"),
+                        InlineKeyboardButton(
+                            text="✖️Delete", callback_data="unbanb_del"
+                        ),
                     ]
                 ]
             ),
@@ -324,7 +333,7 @@ def unbanb_btn(update: Update, context: CallbackContext) -> str:
         bot.answer_callback_query(query.id, text="Deleted!")
         return ""
 
-    
+
 @connection_status
 @bot_admin
 @can_restrict
@@ -382,7 +391,6 @@ def punch(update: Update, context: CallbackContext) -> str:
         message.reply_text("Well damn, I can't punch that user.")
 
     return log_message
-
 
 
 @bot_admin
@@ -540,6 +548,7 @@ def snipe(update: Update, context: CallbackContext):
                 "Couldn't send the message. Perhaps I'm not part of that group?"
             )
 
+
 __mod_name__ = "Bans/Mutes"
 
 __help__ = """
@@ -567,8 +576,12 @@ KICK_HANDLER = CommandHandler(["kick", "punch"], punch, run_async=True)
 UNBAN_HANDLER = CommandHandler("unban", unban, run_async=True)
 ROAR_HANDLER = CommandHandler("roar", selfunban, run_async=True)
 UNBAN_BUTTON_HANDLER = CallbackQueryHandler(unbanb_btn, pattern=r"unbanb_")
-KICKME_HANDLER = DisableAbleCommandHandler(["kickme", "punchme"], punchme, filters=Filters.chat_type.groups, run_async=True)
-SNIPE_HANDLER = CommandHandler("snipe", snipe, pass_args=True, filters=CustomFilters.sudo_filter, run_async=True)
+KICKME_HANDLER = DisableAbleCommandHandler(
+    ["kickme", "punchme"], punchme, filters=Filters.chat_type.groups, run_async=True
+)
+SNIPE_HANDLER = CommandHandler(
+    "snipe", snipe, pass_args=True, filters=CustomFilters.sudo_filter, run_async=True
+)
 BANME_HANDLER = CommandHandler("banme", banme, run_async=True)
 
 dispatcher.add_handler(BAN_HANDLER)

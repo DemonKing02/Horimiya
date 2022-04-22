@@ -54,7 +54,7 @@ def addpro(update: Update, context: CallbackContext) -> str:
         message.reply_text(reply)
         return ""
 
-    with open(ELEVATED_USERS_FILE, 'r') as infile:
+    with open(ELEVATED_USERS_FILE, "r") as infile:
         data = json.load(infile)
 
     if int(user_id) in DEV_USERS:
@@ -62,28 +62,31 @@ def addpro(update: Update, context: CallbackContext) -> str:
 
     if user_id in DRAGONS:
         rt += "Requested to promote a Knight to a Healing-Hero."
-        data['sudos'].remove(user_id)
+        data["sudos"].remove(user_id)
         DRAGONS.remove(user_id)
 
     if user_id in DEMONS:
         rt += "Requested to promote a Attacker to a Healing-Hero."
-        data['supports'].remove(user_id)
+        data["supports"].remove(user_id)
         DEMONS.remove(user_id)
 
     if user_id in WOLVES:
         rt += "Requested to promote a Demi-Human to a Healing-Hero."
-        data['whitelists'].remove(user_id)
+        data["whitelists"].remove(user_id)
         WOLVES.remove(user_id)
 
-    data['devs'].append(user_id)
+    data["devs"].append(user_id)
     DEV_USERS.append(user_id)
 
-    with open(ELEVATED_USERS_FILE, 'w') as outfile:
+    with open(ELEVATED_USERS_FILE, "w") as outfile:
         json.dump(data, outfile, indent=4)
 
     update.effective_message.reply_text(
-        rt + "\nSuccessfully set Disaster level of {} to a Healing-Hero!".format(
-            user_member.first_name))
+        rt
+        + "\nSuccessfully set Disaster level of {} to a Healing-Hero!".format(
+            user_member.first_name
+        )
+    )
 
     log_message = (
         f"#ProDeveloper\n"
@@ -91,7 +94,7 @@ def addpro(update: Update, context: CallbackContext) -> str:
         f"<b>User:</b> {mention_html(user_member.id, html.escape(user_member.first_name))}"
     )
 
-    if chat.type != 'private':
+    if chat.type != "private":
         log_message = f"<b>{html.escape(chat.title)}:</b>\n" + log_message
 
     return log_message
@@ -344,15 +347,15 @@ def rmpro(update: Update, context: CallbackContext) -> str:
         message.reply_text(reply)
         return ""
 
-    with open(ELEVATED_USERS_FILE, 'r') as infile:
+    with open(ELEVATED_USERS_FILE, "r") as infile:
         data = json.load(infile)
 
     if user_id in DEV_USERS:
         message.reply_text("Requested to demote this user to a Normal Human")
         DEV_USERS.remove(user_id)
-        data['devs'].remove(user_id)
+        data["devs"].remove(user_id)
 
-        with open(ELEVATED_USERS_FILE, 'w') as outfile:
+        with open(ELEVATED_USERS_FILE, "w") as outfile:
             json.dump(data, outfile, indent=4)
 
         log_message = (
@@ -361,9 +364,8 @@ def rmpro(update: Update, context: CallbackContext) -> str:
             f"<b>User:</b> {mention_html(user_member.id, html.escape(user_member.first_name))}"
         )
 
-        if chat.type != 'private':
-            log_message = "<b>{}:</b>\n".format(html.escape(
-                chat.title)) + log_message
+        if chat.type != "private":
+            log_message = "<b>{}:</b>\n".format(html.escape(chat.title)) + log_message
 
         return log_message
 
@@ -536,7 +538,8 @@ def removetiger(update: Update, context: CallbackContext) -> str:
 def whitelistlist(update: Update, context: CallbackContext):
     reply = "<b>Known as Demi-Humans♠️:</b>\n"
     m = update.effective_message.reply_text(
-        "<code>Gathering intel..</code>", parse_mode=ParseMode.HTML,
+        "<code>Gathering intel..</code>",
+        parse_mode=ParseMode.HTML,
     )
     bot = context.bot
     for each_user in WOLVES:
@@ -550,12 +553,12 @@ def whitelistlist(update: Update, context: CallbackContext):
     m.edit_text(reply, parse_mode=ParseMode.HTML)
 
 
-
 @whitelist_plus
 def tigerlist(update: Update, context: CallbackContext):
     reply = "<b>Known as Defenders🔰:</b>\n"
     m = update.effective_message.reply_text(
-        "<code>Gathering intel..</code>", parse_mode=ParseMode.HTML,
+        "<code>Gathering intel..</code>",
+        parse_mode=ParseMode.HTML,
     )
     bot = context.bot
     for each_user in TIGERS:
@@ -572,7 +575,8 @@ def tigerlist(update: Update, context: CallbackContext):
 def supportlist(update: Update, context: CallbackContext):
     bot = context.bot
     m = update.effective_message.reply_text(
-        "<code>Gathering intel..</code>", parse_mode=ParseMode.HTML,
+        "<code>Gathering intel..</code>",
+        parse_mode=ParseMode.HTML,
     )
     reply = "<b>Known As Attackers👹:</b>\n"
     for each_user in DEMONS:
@@ -589,7 +593,8 @@ def supportlist(update: Update, context: CallbackContext):
 def sudolist(update: Update, context: CallbackContext):
     bot = context.bot
     m = update.effective_message.reply_text(
-        "<code>Gathering intel..</code>", parse_mode=ParseMode.HTML,
+        "<code>Gathering intel..</code>",
+        parse_mode=ParseMode.HTML,
     )
     true_sudo = list(set(DRAGONS) - set(DEV_USERS))
     reply = "<b>known As Knights😈💥:</b>\n"
@@ -607,7 +612,8 @@ def sudolist(update: Update, context: CallbackContext):
 def devlist(update: Update, context: CallbackContext):
     bot = context.bot
     m = update.effective_message.reply_text(
-        "<code>Gathering intel..</code>", parse_mode=ParseMode.HTML,
+        "<code>Gathering intel..</code>",
+        parse_mode=ParseMode.HTML,
     )
     true_dev = list(set(DEV_USERS) - {OWNER_ID})
     reply = "<b>Jonny-sins list⚡️:</b>\n"
@@ -623,17 +629,29 @@ def devlist(update: Update, context: CallbackContext):
 
 DEV_HANDLER = CommandHandler(("addpro", "addheal"), addpro, run_async=True)
 SUDO_HANDLER = CommandHandler(("addsudo", "addknight"), addsudo, run_async=True)
-SUPPORT_HANDLER = CommandHandler(("addsupport", "addattack"), addsupport, run_async=True)
+SUPPORT_HANDLER = CommandHandler(
+    ("addsupport", "addattack"), addsupport, run_async=True
+)
 TIGER_HANDLER = CommandHandler(("adddefend"), addtiger)
-WHITELIST_HANDLER = CommandHandler(("adddemi", "addwhitelist"), addwhitelist, run_async=True)
+WHITELIST_HANDLER = CommandHandler(
+    ("adddemi", "addwhitelist"), addwhitelist, run_async=True
+)
 RMPRO_HANDLER = CommandHandler(("rmpro", "rmheal"), rmpro, run_async=True)
 UNSUDO_HANDLER = CommandHandler(("removesudo", "rmknight"), removesudo, run_async=True)
-UNSUPPORT_HANDLER = CommandHandler(("removesupport", "rmattack"), removesupport, run_async=True)
+UNSUPPORT_HANDLER = CommandHandler(
+    ("removesupport", "rmattack"), removesupport, run_async=True
+)
 UNTIGER_HANDLER = CommandHandler(("rmdefend"), removetiger)
-UNWHITELIST_HANDLER = CommandHandler(("removewhitelist", "rmdemi"), removewhitelist, run_async=True)
-WHITELISTLIST_HANDLER = CommandHandler(["whitelistlist", "Demilist"], whitelistlist, run_async=True)
+UNWHITELIST_HANDLER = CommandHandler(
+    ("removewhitelist", "rmdemi"), removewhitelist, run_async=True
+)
+WHITELISTLIST_HANDLER = CommandHandler(
+    ["whitelistlist", "Demilist"], whitelistlist, run_async=True
+)
 TIGERLIST_HANDLER = CommandHandler(["defenders"], tigerlist, run_async=True)
-SUPPORTLIST_HANDLER = CommandHandler(["supportlist", "attackers"], supportlist, run_async=True)
+SUPPORTLIST_HANDLER = CommandHandler(
+    ["supportlist", "attackers"], supportlist, run_async=True
+)
 SUDOLIST_HANDLER = CommandHandler(["sudolist", "knights"], sudolist, run_async=True)
 DEVLIST_HANDLER = CommandHandler(["devlist", "healers"], devlist, run_async=True)
 

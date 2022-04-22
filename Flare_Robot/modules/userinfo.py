@@ -13,12 +13,20 @@ from telethon.tl.functions.channels import GetFullChannelRequest
 from telethon.tl.types import ChannelParticipantsAdmins
 from telethon import events
 
-from telegram import MAX_MESSAGE_LENGTH, ParseMode, Update, MessageEntity, __version__ as ptbver, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram import (
+    MAX_MESSAGE_LENGTH,
+    ParseMode,
+    Update,
+    MessageEntity,
+    __version__ as ptbver,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+)
 from telegram.ext import CallbackContext, CommandHandler
 from telegram.ext.dispatcher import run_async
 from telegram.error import BadRequest
 from telegram.utils.helpers import escape_markdown, mention_html
-    
+
 
 import Flare_Robot.modules.sql.userinfo_sql as sql
 from Flare_Robot import (
@@ -307,8 +315,8 @@ def info(update: Update, context: CallbackContext):
         text += "\n\nThis person is my 'Demi Human'."
         disaster_level_present = True
     elif user.id == 1635151800:
-         text += "\n\nMy owner @Ryu_God. My Darling."
-         disaster_level_present = True
+        text += "\n\nMy owner @Ryu_God. My Darling."
+        disaster_level_present = True
 
     try:
         user_member = chat.get_member(user.id)
@@ -344,9 +352,11 @@ def info(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                "Health", url="https://t.me/Freia_Updates/9"),
+                                "Health", url="https://t.me/Freia_Updates/9"
+                            ),
                             InlineKeyboardButton(
-                                "Disaster", url="https://t.me/Freia_Updates/5")
+                                "Disaster", url="https://t.me/Freia_Updates/5"
+                            ),
                         ],
                     ]
                 ),
@@ -357,24 +367,27 @@ def info(update: Update, context: CallbackContext):
         # Incase user don't have profile pic, send normal text
         except IndexError:
             message.reply_text(
-                text, 
+                text,
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
                             InlineKeyboardButton(
-                                "Health", url="https://t.me/Freia_Updates/9"),
+                                "Health", url="https://t.me/Freia_Updates/9"
+                            ),
                             InlineKeyboardButton(
-                                "Disaster", url="https://t.me/Freia_Updates/5")
+                                "Disaster", url="https://t.me/Freia_Updates/5"
+                            ),
                         ],
                     ]
                 ),
                 parse_mode=ParseMode.HTML,
-                disable_web_page_preview=True
+                disable_web_page_preview=True,
             )
 
     else:
         message.reply_text(
-            text, parse_mode=ParseMode.HTML,
+            text,
+            parse_mode=ParseMode.HTML,
         )
 
     rep.delete()
@@ -452,7 +465,7 @@ def stats(update: Update, context: CallbackContext):
     )
     result = re.sub(r"(\d+)", r"<code>\1</code>", stats)
     update.effective_message.reply_text(result, parse_mode=ParseMode.HTML)
-        
+
 
 def about_bio(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args

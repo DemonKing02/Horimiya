@@ -7,7 +7,6 @@ from Flare_Robot import telethn, BOT_NAME
 from Flare_Robot.events import register as Flare
 
 
-
 @Flare(pattern="^/tagall ?(.*)")
 async def _(event):
     if event.fwd_from:
@@ -18,6 +17,7 @@ async def _(event):
         mentions += f" \n [{x.first_name}](tg://user?id={x.id})"
     await event.reply(mentions)
     await event.delete()
+
 
 __mod_name__ = "Tagger"
 __help__ = """

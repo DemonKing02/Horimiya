@@ -43,9 +43,7 @@ TTS_HANDLER = DisableAbleCommandHandler("texttospeech", tts, run_async=True)
 
 dispatcher.add_handler(TTS_HANDLER)
 
-__handlers__ = [
-    TTS_HANDLER
-]
+__handlers__ = [TTS_HANDLER]
 __help__ = """
   • `/texttospeech <text>` :- Converts a text message to a voice message.
 """
