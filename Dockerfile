@@ -1,4 +1,4 @@
-FROM python:3.10.1-slim-buster
+FROM python:3.9.1-buster
 
 WORKDIR /root/Flare_Robot
 
