@@ -43,7 +43,7 @@ asyncio
 python-arq
 aiohttp
 odmantic
-cryptg==22.0.4
+cryptg==0.2.post4
 pymongo[srv]
 TgCrypto
 google_trans_new
