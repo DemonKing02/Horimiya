@@ -78,8 +78,8 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-────「 {} 」────
-*[Heyaa](https://telegra.ph/file/87fc99fdb207271b9439a.jpg)! {}*
+────「 {} 」[────](https://telegra.ph/file/87fc99fdb207271b9439a.jpg)
+*Heyaa! {}*
 *I am a group management bot with a lots of Kawaii advance Features.
 
 ❃⋆✦⋆──────────────⋆✦⋆❃
