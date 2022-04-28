@@ -14,7 +14,7 @@ nekos.py==1.0.3
 html2text
 jikanpy==4.3.2
 lxml==4.7.1
-markdown2==2.4.2
+markdown2==2.4.3
 multicolorcaptcha==1.2.0
 pillow==9.0.1
 pretty-errors
