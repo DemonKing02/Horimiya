@@ -25,7 +25,7 @@ python-telegram-bot==13.11.0
 regex
 pytz
 bing_image_downloader
-redis==4.1.4
+redis==4.3.1
 requests
 spamwatch==0.3.0
 SQLAlchemy==1.4.35
