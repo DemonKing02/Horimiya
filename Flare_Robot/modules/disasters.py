@@ -624,7 +624,7 @@ def devlist(update: Update, context: CallbackContext):
 DEV_HANDLER = CommandHandler(("addpro", "adddev"), addpro, run_async=True)
 SUDO_HANDLER = CommandHandler(("addsudo", "addsensei"), addsudo, run_async=True)
 SUPPORT_HANDLER = CommandHandler(("addsupport", "addcouncil"), addsupport, run_async=True)
-TIGER_HANDLER = CommandHandler(("adddefend"), addtomodachi)
+TIGER_HANDLER = CommandHandler(("adddefend"), "addtomodachi")
 WHITELIST_HANDLER = CommandHandler(("adddemi", "addkurasumeto"), addwhitelist, run_async=True)
 RMPRO_HANDLER = CommandHandler(("rmpro", "rmdev"), rmpro, run_async=True)
 UNSUDO_HANDLER = CommandHandler(("removesudo", "rmsensei"), removesudo, run_async=True)
