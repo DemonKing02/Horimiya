@@ -1,6 +1,7 @@
 from envparse import env
 
 from Flare_Robot import LOGGER
+import os
 
 INFOPIC = bool(os.environ.get("INFOPIC", False))
 EVENT_LOGS = os.environ.get("EVENT_LOGS", None)
