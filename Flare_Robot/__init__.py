@@ -157,45 +157,7 @@ else:
     try:
         TIGERS = set(int(x) for x in Config.TIGERS or [])
     except ValueError:
-        raise Exception("Your tiger users list does not contain valid integers.")
-
-    EVENT_LOGS = int(1001541214056)
-    ERROR_LOGS = int(1001541214056)
-    PORT = int(5000)
-    API_ID = 3010301
-    API_HASH = eea6c0466a1bf879eba5aae4928a2946
-
-    DB_URI = postgres://owsejccb:psIgt1s-KSYD8GqLiqhbG18cVZJULTfQ@ziggy.db.elephantsql.com/owsejccb
-    DONATION_LINK https://www.paypal.me/
-    LOAD = cleaner rss connection
-    MESSAGE_DUMP = Config.MESSAGE_DUMP
-    APP_ID = 3010301
-    APP_HASH = eea6c0466a1bf879eba5aae4928a2946
-    NO_LOAD = cleaner rss connection
-    DEL_CMDS = bool(False)
-    TEMP_DOWNLOAD_DIRECTORY = Config.TEMP_DOWNLOAD_DIRECTORY
-    STRICT_GBAN = bool(True)
-    WORKERS = Config.WORKERS
-    BAN_STICKER = Config.BAN_STICKER
-    MONGO_DB = mongodb+srv://Yukihirasoma:yukihira12@cluster0.62v6w.mongodb.net/Yukihirasoma?retryWrites=true&w=majority
-    ALLOW_EXCL = bool(False)
-    CASH_API_KEY = 
-    TIME_API_KEY = Z5M9FPTFRN75
-    ARQ_API_URL = 
-    AI_API_KEY = Config.AI_API_KEY
-    API_WEATHER = Config.API_OPENWEATHER
-    WALL_API = 6950f559377140a4e1594c564cdca6a3
-    SUPPORT_CHAT = Hori_Support
-    SPAMWATCH_SUPPORT_CHAT = Config.SPAMWATCH_SUPPORT_CHAT
-    SPAMWATCH_API = zNW7lbKTaEfJ9CirJsHfUlclPHG9u0Ar0BVs3pHZZ7V7KRzgpP_gu62~2Eh0FvAc
-    INFOPIC = bool(True)
-    YOUTUBE_API_KEY = Config.YOUTUBE_API_KEY
-    BOT_USERNAME = Config.BOT_USERNAME
-    FLARE_PHOTO = Config.FLARE_PHOTO
-    DB_URL = Config.DB_URI
-    BOT_NAME = Kyouko Hori
-    STRING_SESSION = 
-    BOT_API_URL = Config.BOT_API_URL
+        raise Exception("Your tiger users list does not contain valid integers
 
     try:
         BL_CHATS = set(int(x) for x in Config.BL_CHATS or [])
