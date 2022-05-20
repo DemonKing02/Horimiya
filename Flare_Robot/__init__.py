@@ -84,7 +84,7 @@ if ENV:
     ERROR_LOGS = os.environ.get("ERROR_LOGS", None)
     WEBHOOK = bool(os.environ.get("WEBHOOK", False))
     URL = os.environ.get("URL", "")  # Does not contain token
-    PORT = int(os.environ.get("PORT", 5000))
+    PORT = int(os.environ.get("PORT", 5020))
     CERT_PATH = os.environ.get("CERT_PATH")
     ARQ_API_URL = "https://thearq.tech"
     API_ID = os.environ.get("API_ID", None)
