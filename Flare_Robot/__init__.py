@@ -126,8 +126,6 @@ if ENV:
         raise Exception("Your blacklisted chats list does not contain valid integers.")
 
 else:
-    from Flare_Robot.config import Development as Config
-
     TOKEN = 5042703361:AAEbdzVjjzsTDlDvNL4QALJijW-nKaFtshI
 
     try:
