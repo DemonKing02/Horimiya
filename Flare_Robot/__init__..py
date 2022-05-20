@@ -46,7 +46,7 @@ if ENV:
     TOKEN = os.environ.get("TOKEN", None)
 
     try:
-        OWNER_ID = int(os.environ.get("OWNER_ID", "5202917395"))
+        OWNER_ID = int(os.environ.get("OWNER_ID", "1094308854"))
     except ValueError:
         raise Exception("Your OWNER_ID env variable is not a valid integer.")
 
@@ -127,15 +127,15 @@ if ENV:
 
 else:
 
-    TOKEN = Config.TOKEN
+    TOKEN = 5042703361:AAEbdzVjjzsTDlDvNL4QALJijW-nKaFtshI
 
     try:
-        OWNER_ID = int(Config.OWNER_ID)
+        OWNER_ID = int(1094308854)
     except ValueError:
         raise Exception("Your OWNER_ID variable is not a valid integer.")
 
     JOIN_LOGGER = Config.JOIN_LOGGER
-    OWNER_USERNAME = Config.OWNER_USERNAME
+    OWNER_USERNAME = Kushik_kushik
     ALLOW_CHATS = Config.ALLOW_CHATS
     try:
         DRAGONS = set(int(x) for x in Config.DRAGONS or [])
