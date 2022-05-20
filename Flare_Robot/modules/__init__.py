@@ -2,7 +2,7 @@ import sys
 
 from Flare_Robot import LOGGER
 
-No_LOAD = cleaner rss connection
+No_LOAD=cleaner rss connection
 
 def __list_all_modules():
     import glob
