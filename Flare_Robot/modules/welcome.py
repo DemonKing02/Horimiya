@@ -202,7 +202,7 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
             # Give the owner a special welcome
             if new_mem.id == OWNER_ID:
                 update.effective_message.reply_text(
-                    "Oh hi, my creator.", reply_to_message_id=reply
+                    "Okairi ~ Boku-No Miyamura-Kun.", reply_to_message_id=reply
                 )
                 welcome_log = (
                     f"{html.escape(chat.title)}\n"
@@ -214,7 +214,7 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
             # Welcome Devs
             if new_mem.id in DEV_USERS:
                 update.effective_message.reply_text(
-                    "Whoa! A member of the Iron Blood just joined!",
+                    "Okairi ~ Boku-No Family-Member.",
                     reply_to_message_id=reply,
                 )
                 continue
@@ -222,7 +222,7 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
             # Welcome Sudos
             if new_mem.id in DRAGONS:
                 update.effective_message.reply_text(
-                    "Huh! A Sudo Users just joined! Stay Alert!",
+                    "Okairi ~ Boku-No Sensei.",
                     reply_to_message_id=reply,
                 )
                 continue
@@ -230,7 +230,7 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
             # Welcome Support
             if new_mem.id in DEMONS:
                 update.effective_message.reply_text(
-                    "Huh! Someone with a Support Users just joined!",
+                    "Okairi ~ Boku-No Council-Member.",
                     reply_to_message_id=reply,
                 )
                 continue
@@ -238,7 +238,7 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
             # Welcome WOLVES
             if new_mem.id in WOLVES:
                 update.effective_message.reply_text(
-                    "ohh! A Whitelist Users just joined!", reply_to_message_id=reply
+                    "Okairi ~ Boku-No Tomodachi", reply_to_message_id=reply
                 )
                 continue
 
@@ -254,11 +254,11 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
                         [
                             [
                                 InlineKeyboardButton(
-                                    text="🚑 Support", url=f"https://t.me/{SUPPORT_CHAT}"
+                                    text="🚑 Support", url=f"https://t.me/Hori_Support"
                                 ),
                                 InlineKeyboardButton(
                                     text="📢 Updates",
-                                    url="https://t.me/Freia_Updates",
+                                    url="https://t.me/Hori_Updates",
                                 ),
                             ]
                         ],
