@@ -125,43 +125,6 @@ if ENV:
     except ValueError:
         raise Exception("Your blacklisted chats list does not contain valid integers.")
 
-else:
-    TOKEN = 5042703361:AAEbdzVjjzsTDlDvNL4QALJijW-nKaFtshI
-
-    try:
-        OWNER_ID = int(1094308854)
-    except ValueError:
-        raise Exception("Your OWNER_ID variable is not a valid integer.")
-
-    JOIN_LOGGER = int(1001541214056)
-    OWNER_USERNAME = Kushik_kushik
-    ALLOW_CHATS = bool(True)
-    try:
-        DRAGONS = set(int(x) for x in Config.DRAGONS or [])
-        DEV_USERS = set(int(x) for x in Config.DEV_USERS or [])
-    except ValueError:
-        raise Exception("Your sudo or dev users list does not contain valid integers.")
-
-    try:
-        DEMONS = set(int(x) for x in Config.DEMONS or [])
-    except ValueError:
-        raise Exception("Your support users list does not contain valid integers.")
-
-    try:
-        WOLVES = set(int(x) for x in Config.WOLVES or [])
-    except ValueError:
-        raise Exception("Your whitelisted users list does not contain valid integers.")
-
-    try:
-        TIGERS = set(int(x) for x in Config.TIGERS or [])
-    except ValueError:
-        raise Exception("Your tiger users list does not contain valid integers
-
-    try:
-        BL_CHATS = set(int(x) for x in Config.BL_CHATS or [])
-    except ValueError:
-        raise Exception("Your blacklisted chats list does not contain valid integers.")
-        
 
 DRAGONS.add(OWNER_ID)
 DEV_USERS.add(OWNER_ID)
