@@ -1,7 +1,8 @@
 import sys
 
-from Flare_Robot import LOAD, LOGGER, NO_LOAD
-
+from Flare_Robot import LOAD
+from Flare_Robot import NO_LOAD
+from Flare_Robot import LOGGER
 
 def __list_all_modules():
     import glob
