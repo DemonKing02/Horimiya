@@ -160,17 +160,14 @@ else:
         raise Exception("Your tiger users list does not contain valid integers.")
 
     EVENT_LOGS = int(1001541214056)
-    ERROR_LOGS = Config.EVENT_LOGS
-    WEBHOOK = Config.WEBHOOK
-    URL = Config.URL
-    PORT = Config.PORT
-    CERT_PATH = Config.CERT_PATH
-    API_ID = Config.API_ID
-    API_HASH = Config.API_HASH
+    ERROR_LOGS = int(1001541214056)
+    PORT = int(5000)
+    API_ID = 3010301
+    API_HASH = eea6c0466a1bf879eba5aae4928a2946
 
-    DB_URI = Config.SQLALCHEMY_DATABASE_URI
-    DONATION_LINK = Config.DONATION_LINK
-    LOAD = Config.LOAD
+    DB_URI = postgres://owsejccb:psIgt1s-KSYD8GqLiqhbG18cVZJULTfQ@ziggy.db.elephantsql.com/owsejccb
+    DONATION_LINK https://www.paypal.me/
+    LOAD =
     MESSAGE_DUMP = Config.MESSAGE_DUMP
     APP_ID = Config.APP_ID
     APP_HASH = Config.APP_HASH
@@ -208,7 +205,7 @@ else:
 
 DRAGONS.add(OWNER_ID)
 DEV_USERS.add(OWNER_ID)
-DEMONS.add(1470075895)
+DEMONS.add(5308235800)
 
 
 
