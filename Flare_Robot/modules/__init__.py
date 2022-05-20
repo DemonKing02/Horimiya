@@ -4,6 +4,16 @@ from Flare_Robot import LOGGER
 
 No_LOAD = "cleaner rss connection"
 
+LOGGER = logging.getLogger(__name__)
+
+# if version < 3.6, stop bot.
+if sys.version_info[0] < 3 or sys.version_info[1] < 6:
+    LOGGER.error(
+        "You MUST have a python version of at least 3.6! Multiple features depend on this. Bot quitting.",
+    )
+    quit(1)
+
+
 def __list_all_modules():
     import glob
     from os.path import basename, dirname, isfile
