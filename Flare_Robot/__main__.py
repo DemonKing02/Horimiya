@@ -623,7 +623,7 @@ def main():
         try:
             dispatcher.bot.sendMessage(
                 f"@{SUPPORT_CHAT}",
-                "[Hehe, now Kawaii got fully charged of Beauty!!](https://telegra.ph/file/72792bfea6576f0ea1873.mp4)",
+                "[Miyamura-san Matte-Matte](https://telegra.ph/file/97209deaff6b08c9d368d.jpg)",
                 parse_mode=ParseMode.MARKDOWN,
             )
         except Unauthorized:
