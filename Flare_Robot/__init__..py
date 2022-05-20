@@ -92,7 +92,7 @@ if ENV:
     API_HASH = os.environ.get("API_HASH", None)
     DB_URL = os.environ.get("DATABSE_URL", "postgresql://eptbyege:0TbLe5xjHocel_1kPTXvKyOi54oV8ywf@tyke.db.elephantsql.com/eptbyege")
     DONATION_LINK = os.environ.get("DONATION_LINK")
-    LOAD = os.environ.get("LOAD", "").split()
+    LOAD = os.environ.get("LOAD", "cleaner rss connection").split()
     NO_LOAD = os.environ.get("NO_LOAD", "translation").split()
     DEL_CMDS = bool(os.environ.get("DEL_CMDS", False))
     STRICT_GBAN = bool(os.environ.get("STRICT_GBAN", False))
