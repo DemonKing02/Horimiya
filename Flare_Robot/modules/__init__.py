@@ -9,7 +9,7 @@ logging.basicConfig(
 )
 
 No_LOAD = "cleaner rss connection"
-
+LOAD = "cleaner rss connection"
 LOGGER = logging.getLogger(__name__)
 
 # if version < 3.6, stop bot.
