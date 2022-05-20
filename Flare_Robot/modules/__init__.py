@@ -1,6 +1,5 @@
 import sys
 
-from Flare_Robot import LOGGER
 
 No_LOAD = "cleaner rss connection"
 
