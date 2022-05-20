@@ -78,16 +78,15 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-────「 {} 」[────](https://telegra.ph/file/87fc99fdb207271b9439a.jpg)
-*Heyaa! {}*
-*I am a group management bot with a lots of Kawaii advance Features.
+────『 [Kyouko Hori✿](https://anilist.co/character/66171/Kyouko-Hori) 』[────](https://telegra.ph/file/87fc99fdb207271b9439a.jpg)
+*Hey! {}*
+*I Am a Group Management Bot With a Lots of Advance Features.
 
-❃⋆✦⋆──────────────⋆✦⋆❃
-➷ *Uptime:* {}
-➷ {} *users are Kawaii
-❃⋆✦⋆──────────────⋆✦⋆❃
+❃⋆✦◈──────────────◈✦⋆❃
+➢ *Uptime:* {}
+❃⋆✦◈──────────────◈✦⋆❃
 
-➹ Try The Help Buttons Below To Know My Abilities ××
+➢ Try The Help Buttons Below To Know My Abilities ××.
 """
 
 
@@ -100,13 +99,13 @@ buttons = [
     [
         InlineKeyboardButton(text="[► Help ◄]", callback_data="help_back"),
         InlineKeyboardButton(
-            text="🌎Chit Chat", url="https://t.me/Freia_Support"
+            text="► Chit-Chat ◄", url="https://t.me/MyAnimeMania"
         ),
         InlineKeyboardButton(text="[► Inline ◄]", switch_inline_query_current_chat=""),
     ],
     [
-        InlineKeyboardButton(text="🚑Support", url=f"https://t.me/{SUPPORT_CHAT}"),
-        InlineKeyboardButton(text="📡Updates", url="https://t.me/Freia_Updates"),
+        InlineKeyboardButton(text="🚑Support", url=f"https://t.me/Hori_Support"),
+        InlineKeyboardButton(text="📡Updates", url="https://t.me/Hori_Updates"),
     ],
 ]
 
@@ -126,9 +125,9 @@ Main commands available[.](https://telegra.ph/file/83b00bff39cb132dd3795.jpg)
     else "\nAll commands can either be used with / or !.\nKindly use ! for commands if / is not working\n",
 )
 
-HELP_MSG = "Click the button below to get help manu in your pm."
-FLARE_IMG = "https://telegra.ph/file/9720f17d6d8fb47a0ae58.mp4"
-HELP_IMG = "https://telegra.ph/file/83b00bff39cb132dd3795.jpg"
+HELP_MSG = "Click the button below to get help menu in your pm."
+FLARE_IMG = "https://telegra.ph/file/f84fb03c0ad355d6ceec9.jpg"
+HELP_IMG = "https://telegra.ph/file/28ac5e79824fed33cee19.jpg"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
 But Kawaii is free for everyone"""
@@ -259,11 +258,11 @@ def start(update: Update, context: CallbackContext):
                     [
                         InlineKeyboardButton(
                             text="🚑 Support",
-                            url=f"https://telegram.dog/{SUPPORT_CHAT}",
+                            url=f"https://telegram.dog/Hori_Support",
                         ),
                         InlineKeyboardButton(
                             text="📢 Updates",
-                            url="https://t.me/Freia_Updates",
+                            url="https://t.me/Hori_Updates",
                         ),
                     ]
                 ]
