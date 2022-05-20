@@ -247,9 +247,9 @@ def start(update: Update, context: CallbackContext):
                 timeout=60,
             )
     else:
-        update.effective_message.reply_animation(
+        update.effective_message.reply_photo(
             FLARE_IMG,
-            caption="<b>Hoi-Hoi! It's me the Kawaii;)!\nHaven't sleep since</b>: <code>{}</code>".format(
+            caption="<b>Miyamura-san Matte-Matte)!\nHaven't sleep since</b>: <code>{}</code>".format(
                 uptime
             ),
             parse_mode=ParseMode.HTML,
