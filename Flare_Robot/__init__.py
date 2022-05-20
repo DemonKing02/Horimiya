@@ -97,7 +97,7 @@ if ENV:
     DEL_CMDS = bool(os.environ.get("DEL_CMDS", False))
     STRICT_GBAN = bool(os.environ.get("STRICT_GBAN", False))
     WORKERS = int(os.environ.get("WORKERS", 8))
-    MONGO_DB = os.environ.get("MONGO_DB_URI", "mongodb+srv://Yukihirasoma:yukihira12@cluster0.62v6w.mongodb.net/Yukihirasoma?retryWrites=true&w=majority")
+    MONGO_DB = "Flare"
     TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY", "./")
     BAN_STICKER = os.environ.get("BAN_STICKER", "CAADAgADOwADPPEcAXkko5EB3YGYAg")
     MESSAGE_DUMP = os.environ.get("MESSAGE_DUMP", "-1001527971671")
