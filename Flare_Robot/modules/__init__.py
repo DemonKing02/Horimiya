@@ -1,4 +1,5 @@
 import sys
+import logging
 
 # enable logging
 logging.basicConfig(
