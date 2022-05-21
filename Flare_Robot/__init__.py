@@ -127,7 +127,7 @@ if ENV:
 
 else:
 
-    TOKEN = 5042703361:AAEbdzVjjzsTDlDvNL4QALJijW-nKaFtshI
+    TOKEN = os.environ.get("TOKEN", None)
 
     try:
         OWNER_ID = int(1094308854)
