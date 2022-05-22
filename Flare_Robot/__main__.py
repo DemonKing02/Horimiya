@@ -93,7 +93,7 @@ PM_START_TEXT = """
 buttons = [
     [
         InlineKeyboardButton(
-            text=f"Add Cute kawaii To Your Group", url=f"t.me/Kawai_probot?startgroup=true"
+            text=f"Add Hori To Your Group", url=f"t.me/Horimiya_robot?startgroup=true"
         )
     ],
     [
