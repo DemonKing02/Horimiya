@@ -18,7 +18,6 @@ from pymongo import MongoClient
 from pymongo.errors import ServerSelectionTimeoutError
 from redis import StrictRedis
 from Python_ARQ import ARQ
-from aiohttp import ClientSession
 from telegraph import Telegraph
 from telegram import Chat
 
