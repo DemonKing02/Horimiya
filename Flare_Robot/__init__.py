@@ -122,6 +122,7 @@ if ENV:
     BOT_ID = int(os.environ.get("BOT_ID", None))
     ARQ_API_URL = os.environ.get("ARQ_API_URL", "https://arq.hamker.in")
     ARQ_API_KEY = os.environ.get("ARQ_API_KEY", "BCYKVF-KYQWFM-JCMORU-RZWOFQ-ARQ")
+    STRING_SESSION = os.environ.get("STRING_SESSION", None)
 
     ALLOW_CHATS = os.environ.get("ALLOW_CHATS", True)
 
