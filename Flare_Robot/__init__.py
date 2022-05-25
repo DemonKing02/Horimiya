@@ -214,7 +214,9 @@ motor = motor_asyncio.AsyncIOMotorClient(MONGO_DB_URI)
 db = motor[MONGO_DB]
 engine = AIOEngine(motor, MONGO_DB)
 print("[INFO]: INITIALZING AIOHTTP SESSION")
+aiohttpsession = 1AZWarzkBu4SuWz3crd-Bkj-c4hN4vQ822H3zkqhkpAnW2Dmq_Ry_OM7pfQ2DzYyhNjTqfxMBHGKirUOir51u1uNRNCyX-9f3LXuKYhaM2sATv8pqqD76_YwizozlAHE_PEKZYnnoVLYnHIFr_CHlVIw7Kfvzwnjg39RqTlS3rdb3084txqrKiugtqeonzgQemGmXH_wlA2dpLROGq44gRtEpv8XESYo-O8DOfZgKTnyXFtYUnig5YZrhcL1FMnZjRsEXreeN-2nW-s4r5H6kNLm0uJEQfHTPq0IRyQEkcvEiXtf3Zz7ygy-s1OTkPU7GRK7mD6G0cjMlsDsn3r_D5R14jbzILtk=
 aiohttpsession = ClientSession()
+
 # ARQ Client
 print("[INFO]: INITIALIZING ARQ CLIENT")
 arq = ARQ("https://thearq.tech", "YIECCC-NAJARO-OLLREW-SJSRIP-ARQ", aiohttpsession)
