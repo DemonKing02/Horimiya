@@ -15,7 +15,7 @@ ARQ_API_URL = "https://thearq.tech"
 API_ID = os.environ.get("API_ID", None)
 YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", True)
 API_HASH = os.environ.get("API_HASH", None)
-DB_URL = os.environ.get("DATABSE_URL", "postgresql://eptbyege:0TbLe5xjHocel_1kPTXvKyOi54oV8ywf@tyke.db.elephantsql.com/eptbyege")
+DB_URL = os.environ.get("DATABASE_URL", None)
 DONATION_LINK = os.environ.get("DONATION_LINK") LOAD = os.environ.get("LOAD", "").split()
 NO_LOAD = os.environ.get("NO_LOAD", "translation").split()
 DEL_CMDS = bool(os.environ.get("DEL_CMDS", False))
