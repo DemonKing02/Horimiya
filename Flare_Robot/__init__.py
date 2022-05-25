@@ -122,7 +122,8 @@ if ENV:
     BOT_ID = int(os.environ.get("BOT_ID", None))
     ARQ_API_URL = os.environ.get("ARQ_API_URL", "https://arq.hamker.in")
     ARQ_API_KEY = os.environ.get("ARQ_API_KEY", "BCYKVF-KYQWFM-JCMORU-RZWOFQ-ARQ")
-    STRING_SESSION = os.environ.get("STRING_SESSION", None)
+    ClientSession = os.environ.get("STRING_SESSION", "1AZWarzkBu4SuWz3crd-Bkj-c4hN4vQ822H3zkqhkpAnW2Dmq_Ry_OM7pfQ2DzYyhNjTqfxMBHGKirUOir51u1uNRNCyX-9f3LXuKYhaM2sATv8pqqD76_YwizozlAHE_PEKZYnnoVLYnHIFr_CHlVIw7Kfvzwnjg39RqTlS3rdb3084txqrKiugtqeonzgQemGmXH_wlA2dpLROGq44gRtEpv8XESYo-O8DOfZgKTnyXFtYUnig5YZrhcL1FMnZjRsEXreeN-2nW-s4r5H6kNLm0uJEQfHTPq0IRyQEkcvEiXtf3Zz7ygy-s1OTkPU7GRK7mD6G0cjMlsDsn3r_D5R14jbzILtk=")
+    STRING_SESSION = ClientSession
 
     ALLOW_CHATS = os.environ.get("ALLOW_CHATS", True)
 
@@ -203,7 +204,7 @@ else:
     STRING_SESSION = Config.STRING_SESSION
     LASTFM_API_KEY = Config.LASTFM_API_KEY
     CF_API_KEY = Config.CF_API_KEY
-
+    
     try:
         BL_CHATS = {int(x) for x in Config.BL_CHATS or []}
     except ValueError:
