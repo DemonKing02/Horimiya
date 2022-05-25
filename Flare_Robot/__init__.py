@@ -113,16 +113,7 @@ if ENV:
     CASH_API_KEY = os.environ.get("CASH_API_KEY", None)
     TIME_API_KEY = os.environ.get("TIME_API_KEY", None)
     WALL_API = os.environ.get("WALL_API", None)
-    SUPPORT_CHAT = os.environ.get("SUPPORT_CHAT", None)
-    SPAMWATCH_SUPPORT_CHAT = os.environ.get("SPAMWATCH_SUPPORT_CHAT", None)
-    SPAMWATCH_API = os.environ.get("SPAMWATCH_API", None)
-    LASTFM_API_KEY = os.environ.get("LASTFM_API_KEY", None)
-    CF_API_KEY = os.environ.get("CF_API_KEY", None)
-    WELCOME_DELAY_KICK_SEC = os.environ.get("WELCOME_DELAY_KICL_SEC", None)
-    BOT_ID = int(os.environ.get("BOT_ID", None))
-    ARQ_API_URL = os.environ.get("ARQ_API_URL", "https://arq.hamker.in")
-    ARQ_API_KEY = os.environ.get("ARQ_API_KEY", "BCYKVF-KYQWFM-JCMORU-RZWOFQ-ARQ")
-    ClientSession = os.environ.get("STRING_SESSION", "1AZWarzkBu4SuWz3crd-Bkj-c4hN4vQ822H3zkqhkpAnW2Dmq_Ry_OM7pfQ2DzYyhNjTqfxMBHGKirUOir51u1uNRNCyX-9f3LXuKYhaM2sATv8pqqD76_YwizozlAHE_PEKZYnnoVLYnHIFr_CHlVIw7Kfvzwnjg39RqTlS3rdb3084txqrKiugtqeonzgQemGmXH_wlA2dpLROGq44gRtEpv8XESYo-O8DOfZgKTnyXFtYUnig5YZrhcL1FMnZjRsEXreeN-2nW-s4r5H6kNLm0uJEQfHTPq0IRyQEkcvEiXtf3Zz7ygy-s1OTkPU7GRK7mD6G0cjMlsDsn3r_D5R14jbzILtk=")
+    SUPPORT_CHAT CHlVIw7Kfvzwnjg39RqmD6G0cjMlsDsn3r_D5R14jbzILtk=")
     ALLOW_CHATS = os.environ.get("ALLOW_CHATS", True)
 
     try:
